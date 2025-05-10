@@ -2,8 +2,19 @@ package co.edu.uniquindio.poo.proyectofinal.model;
 
 public class Medico extends Persona{
 
-    public Medico(String nombre, String id, String telefono, String email){
+    private EspecialidadMedico especialidad;
+
+    public Medico(EspecialidadMedico especialidad, String nombre, String id, String telefono, String email){
         super(nombre, id, telefono, email);
+        this.especialidad = especialidad;
+    }
+
+    public EspecialidadMedico getEspecialidad() {
+        return especialidad;
+    }
+
+    public void setEspecialidad(EspecialidadMedico especialidad) {
+        this.especialidad = especialidad;
     }
 
     public void registrarDiagnostico (){
