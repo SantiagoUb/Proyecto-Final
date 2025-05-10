@@ -44,5 +44,5 @@ public class HistorialMedico {
     public void registro(){
 
     }
-    
+
 }
