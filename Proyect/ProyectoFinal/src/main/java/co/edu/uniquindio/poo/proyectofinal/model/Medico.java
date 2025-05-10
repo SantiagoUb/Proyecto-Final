@@ -14,12 +14,12 @@ public class Medico extends Persona{
 
     }
 
-    public void consultarHistorial () {
+    public void consultarHistorialMedico () {
 
     }
 
     public void recetarMedicamento(){
 
     }
-    
+
 }
