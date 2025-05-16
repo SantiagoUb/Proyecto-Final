@@ -3,10 +3,12 @@ package co.edu.uniquindio.poo.proyectofinal.model;
 public class Sala {
     private String numero;
     private boolean disponible;
+    public TipoSala tipoSala;
 
-    public Sala(String numero, boolean disponible) {
+    public Sala(String numero, boolean disponible, TipoSala tIpoSala) {
         this.numero = numero;
         this.disponible = disponible;
+        this.tipoSala = tipoSala;
     }
 
     public String getNumero() {
@@ -23,6 +25,14 @@ public class Sala {
 
     public void setDisponible(boolean disponible) {
         this.disponible = disponible;
+    }
+
+    public TipoSala getTipoSala() {
+        return tipoSala;
+    }
+
+    public void setTipoSala(TipoSala tipoSala) {
+        this.tipoSala = tipoSala;
     }
 
     public void liberarSala (){

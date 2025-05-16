@@ -1,6 +1,6 @@
 package co.edu.uniquindio.poo.proyectofinal.model;
 
-public class Persona {
+public abstract class Persona {
     protected String nombre;
     protected String id;
     protected String telefono;

@@ -5,12 +5,16 @@ public class Medicamento {
     private String codigo;
     private String descripcion;
     private int cantidadDisponible;
+    private HistorialMedico theHistorialMedico;
+    private EstadoMedicamento estadoMedicamento;
 
-    public Medicamento(String nombre, String codigo, String descripcion, int cantidadDisponible) {
+    public Medicamento(String nombre, String codigo, String descripcion, int cantidadDisponible, HistorialMedico theHistorialMedico, EstadoMedicamento estadoMedicamento) {
         this.nombre = nombre;
         this.codigo = codigo;
         this.descripcion = descripcion;
         this.cantidadDisponible = cantidadDisponible;
+        this.theHistorialMedico = theHistorialMedico;
+        this.estadoMedicamento = estadoMedicamento;
     }
 
     public String getNombre() {
@@ -51,5 +55,21 @@ public class Medicamento {
 
     public void aumentarCantidad(){
 
+    }
+
+    public HistorialMedico getTheHistorialMedico() {
+        return theHistorialMedico;
+    }
+
+    public void setTheHistorialMedico(HistorialMedico theHistorialMedico) {
+        this.theHistorialMedico = theHistorialMedico;
+    }
+
+    public EstadoMedicamento getEstadoMedicamento() {
+        return estadoMedicamento;
+    }
+
+    public void setEstadoMedicamento(EstadoMedicamento estadoMedicamento) {
+        this.estadoMedicamento = estadoMedicamento;
     }
 }

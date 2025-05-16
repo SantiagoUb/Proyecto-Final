@@ -1,5 +1,5 @@
 package co.edu.uniquindio.poo.proyectofinal.model;
 
-public enum TIpoSala {
+public enum TipoSala {
     CONSULTA, EMERGENCIA, HOSPITALIZACION
 }

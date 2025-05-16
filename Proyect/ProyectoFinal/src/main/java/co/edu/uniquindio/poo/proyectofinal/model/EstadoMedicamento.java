@@ -1,5 +1,5 @@
 package co.edu.uniquindio.poo.proyectofinal.model;
 
 public enum EstadoMedicamento {
-    DISPONIBLE, AGOTADO, BAJA_EXISTENCIA
+    DISPONIBLE, AGOTADO
 }
