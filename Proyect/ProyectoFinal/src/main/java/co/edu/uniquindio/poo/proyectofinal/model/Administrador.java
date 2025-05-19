@@ -24,6 +24,17 @@ public class Administrador extends Persona{
         this.farmacia = farmacia;
     }
 
+    //CRUD Notificacion
+    public boolean crearNotificacion(Notificacion newNotificacion){
+        listNotificaciones.add(newNotificacion);
+        return true;
+    }
+
+    public boolean eliminarNotificacion(Notificacion notificacionEliminar){
+        listNotificaciones.remove(notificacionEliminar);
+        return true;
+    }
+
 
     public LinkedList<Medico> getListMedicos() {
         return listMedicos;

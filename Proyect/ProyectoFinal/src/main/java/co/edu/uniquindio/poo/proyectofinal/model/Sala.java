@@ -3,10 +3,10 @@ package co.edu.uniquindio.poo.proyectofinal.model;
 public class Sala {
     private String numero;
     private boolean disponible;
-    public TipoSala tipoSala;
+    public TIpoSala tipoSala;
     public Administrador administrador;
 
-    public Sala(String numero, boolean disponible, TipoSala tIpoSala, Administrador administrador) {
+    public Sala(String numero, boolean disponible, TIpoSala tIpoSala, Administrador administrador) {
         this.numero = numero;
         this.disponible = disponible;
         this.tipoSala = tipoSala;

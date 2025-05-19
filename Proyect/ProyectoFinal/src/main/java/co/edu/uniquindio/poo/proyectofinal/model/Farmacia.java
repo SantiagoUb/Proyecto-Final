@@ -34,9 +34,65 @@ public class Farmacia {
         this.direccion = direccion;
     }
 
+    //CRUD Medicamento
+    public  boolean crearMedicamento (Medicamento newMedicamento){
+        for (Medicamento medicamento : listMedicamentos) {
+            if(verificarMedicamento(newMedicamento.getCodigo())){
+                listMedicamentos.add(medicamento);
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean verificarMedicamento(String codigo){
+        for (Medicamento medicamento : listMedicamentos) {
+            if(medicamento.getCodigo().equals(codigo)){
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public Medicamento buscarMedicamento(String codigo) {
+        for (Medicamento medicamento : listMedicamentos) {
+            if(medicamento.getCodigo().equals(codigo)){
+                return medicamento;
+            }
+        }
+        return null;
+    }
+
+    public boolean actualizarMedicamento(String nombre, String codigo, String descripcion, int cantidadDisponible){
+        boolean flag = false;
+
+        for(Medicamento medicamento: listMedicamentos) {
+            if(medicamento.getCodigo().equals(codigo)){
+                medicamento.setNombre(nombre);
+                medicamento.setDescripcion(descripcion);
+                medicamento.setCantidadDisponible(cantidadDisponible);
+                flag = true;
+                break;
+            }
+        }
+        return flag;
+    }
+
+    public boolean eliminarMedicamento(String codigo) {
+        boolean flag = false;
+        for(Medicamento medicamento : listMedicamentos) {
+            if(medicamento.getCodigo().equals(codigo)){
+                listMedicamentos.remove(codigo);
+                return true;
+            }
+        }
+        return flag;
+    }
+
     public void entregarMedicamento(){
 
     }
+
 
     public void reporteDisponibleMedicamento(){
 
