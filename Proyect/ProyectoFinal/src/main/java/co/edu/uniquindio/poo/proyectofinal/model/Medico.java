@@ -6,11 +6,13 @@ public class Medico extends Persona{
 
     private EspecialidadMedico especialidad;
     private LinkedList<HistorialMedico> listHistoriales;
+    public Administrador administrador;
 
-    public Medico(EspecialidadMedico especialidad, String nombre, String id, String telefono, String email){
+    public Medico(EspecialidadMedico especialidad, String nombre, String id, String telefono, String email, Administrador administrador) {
         super(nombre, id, telefono, email);
         this.especialidad = especialidad;
         LinkedList<HistorialMedico> listHistoriales = new LinkedList<>();
+        this.administrador = administrador;
     }
 
     public EspecialidadMedico getEspecialidad() {
@@ -43,5 +45,13 @@ public class Medico extends Persona{
 
     public void setListHistoriales(LinkedList<HistorialMedico> listHistoriales) {
         this.listHistoriales = listHistoriales;
+    }
+
+    public Administrador getAdministrador() {
+        return administrador;
+    }
+
+    public void setAdministrador(Administrador administrador) {
+        this.administrador = administrador;
     }
 }

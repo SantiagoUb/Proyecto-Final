@@ -9,13 +9,15 @@ public class Cita {
     private LocalDate hora;
     public EstadoCita estadoCita;
     private HistorialMedico theHistorialMedico;
+    public Administrador administrador;
 
-    public Cita(String id, LocalDate fecha, LocalDate hora, HistorialMedico theHistorialMedico, EstadoCita estadoCita) {
+    public Cita(String id, LocalDate fecha, LocalDate hora, HistorialMedico theHistorialMedico, EstadoCita estadoCita, Administrador administrador) {
         this.id = id;
         this.fecha = fecha;
         this.hora = hora;
         this.estadoCita = estadoCita;
         this.theHistorialMedico = theHistorialMedico;
+        this.administrador = administrador;
     }
 
     public String getId() {
@@ -56,5 +58,13 @@ public class Cita {
 
     public void setTheHistorialMedico(HistorialMedico theHistorialMedico) {
         this.theHistorialMedico = theHistorialMedico;
+    }
+
+    public Administrador getAdministrador() {
+        return administrador;
+    }
+
+    public void setAdministrador(Administrador administrador) {
+        this.administrador = administrador;
     }
 }

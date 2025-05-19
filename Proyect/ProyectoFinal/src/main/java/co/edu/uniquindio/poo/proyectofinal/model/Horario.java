@@ -6,12 +6,14 @@ public class Horario {
     private String horarioEntrada;
     private String horarioSalida;
     private TipoHorario tipoHorario;
+    public Administrador administrador;
 
-    public Horario(String dia, String horarioInicio, String horarioFin,TipoHorario tipoHorario) {
+    public Horario(String dia, String horarioInicio, String horarioFin,TipoHorario tipoHorario, Administrador administrador) {
         this.dia = dia;
         this.horarioEntrada = horarioInicio;
         this.horarioSalida = horarioFin;
         this.tipoHorario = tipoHorario;
+        this.administrador = administrador;
     }
 
     public String getDia() {
@@ -46,4 +48,11 @@ public class Horario {
         this.tipoHorario = tipoHorario;
     }
 
+    public Administrador getAdministrador() {
+        return administrador;
+    }
+
+    public void setAdministrador(Administrador administrador) {
+        this.administrador = administrador;
+    }
 }

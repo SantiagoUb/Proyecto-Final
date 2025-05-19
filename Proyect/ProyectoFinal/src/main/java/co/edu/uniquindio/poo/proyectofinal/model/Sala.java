@@ -4,11 +4,13 @@ public class Sala {
     private String numero;
     private boolean disponible;
     public TipoSala tipoSala;
+    public Administrador administrador;
 
-    public Sala(String numero, boolean disponible, TipoSala tIpoSala) {
+    public Sala(String numero, boolean disponible, TipoSala tIpoSala, Administrador administrador) {
         this.numero = numero;
         this.disponible = disponible;
         this.tipoSala = tipoSala;
+        this.administrador = administrador;
     }
 
     public String getNumero() {
@@ -37,5 +39,13 @@ public class Sala {
 
     public void liberarSala (){
 
+    }
+
+    public Administrador getAdministrador() {
+        return administrador;
+    }
+
+    public void setAdministrador(Administrador administrador) {
+        this.administrador = administrador;
     }
 }

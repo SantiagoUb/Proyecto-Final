@@ -3,13 +3,13 @@ package co.edu.uniquindio.poo.proyectofinal.model;
 import java.util.LinkedList;
 
 public class Administrador extends Persona{
-    private LinkedList<Medico> listMedicos;
-    private LinkedList<Paciente>listPacientes;
-    private LinkedList<Sala>listSalas;
-    private LinkedList<Cita>listCitas;
-    private LinkedList<Horario>listHorarios;
+    public LinkedList<Medico> listMedicos;
+    public LinkedList<Paciente>listPacientes;
+    public LinkedList<Sala>listSalas;
+    public LinkedList<Cita>listCitas;
+    public LinkedList<Horario>listHorarios;
     private LinkedList<Notificacion> listNotificaciones;
-    private LinkedList<HistorialMedico> listHistorialMedicos;
+    public LinkedList<HistorialMedico> listHistorialMedicos;
     private Farmacia farmacia;
 
     public Administrador(String nombre, String id, String telefono, String email, Farmacia farmacia) {

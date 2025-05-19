@@ -9,15 +9,17 @@ public class HistorialMedico {
     private Paciente paciente;
     private Medico theMedico;
     private Cita theCita;
+    private Administrador theAdministrador;
 
 
-    public HistorialMedico(String idHistorial, String notasAdicionales, Paciente paciente, Medico theMedico, Cita theCita) {
+    public HistorialMedico(String idHistorial, String notasAdicionales, Paciente paciente, Medico theMedico, Cita theCita, Administrador theAdministrador) {
         this.idHistorial = idHistorial;
         this.descripcion = notasAdicionales;
         this.paciente = paciente;
         listMedicamentos = new LinkedList<>();
         this.theMedico = theMedico;
         this.theCita = theCita;
+        this.theAdministrador = theAdministrador;
     }
 
     public String getIdHistorial() {
@@ -86,5 +88,13 @@ public class HistorialMedico {
 
     public void setTheCita(Cita theCita) {
         this.theCita = theCita;
+    }
+
+    public Administrador getTheAdministrador() {
+        return theAdministrador;
+    }
+
+    public void setTheAdministrador(Administrador theAdministrador) {
+        this.theAdministrador = theAdministrador;
     }
 }

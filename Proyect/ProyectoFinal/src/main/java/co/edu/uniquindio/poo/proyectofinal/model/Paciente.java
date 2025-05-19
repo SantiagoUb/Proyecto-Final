@@ -7,12 +7,17 @@ public class Paciente extends Persona{
     private HistorialMedico theHistorialMedico;
     private LinkedList<Notificacion> listaNotificaciones;
     private Farmacia theFarmacia;
+    private Cita theCita;
+    public Administrador administrador;
 
-    public Paciente (HistorialMedico theHistorialMedico, Farmacia theFarmacia, String nombre, String id, String telefono, String email){
+    public Paciente (HistorialMedico theHistorialMedico, Farmacia theFarmacia, String nombre, String id, String telefono, String email,Cita theCita, Administrador administrador) {
         super(nombre, id, telefono, email);
         this.theHistorialMedico = theHistorialMedico;
         this.theFarmacia = theFarmacia;
         this.listaNotificaciones = new LinkedList<>();
+        this.theCita = theCita;
+        this.administrador = administrador;
+
     }
 
     public void solicitarCita(){
@@ -53,5 +58,21 @@ public class Paciente extends Persona{
 
     public void setTheFarmacia(Farmacia theFarmacia) {
         this.theFarmacia = theFarmacia;
+    }
+
+    public Cita getTheCita() {
+        return theCita;
+    }
+
+    public void setTheCita(Cita theCita) {
+        this.theCita = theCita;
+    }
+
+    public Administrador getAdministrador() {
+        return administrador;
+    }
+
+    public void setAdministrador(Administrador administrador) {
+        this.administrador = administrador;
     }
 }

@@ -8,12 +8,14 @@ public class Farmacia {
     private String direccion;
     private LinkedList<Paciente> listPacientes;
     private LinkedList<Medicamento> listMedicamentos;
+    private Administrador administrador;
 
-    public Farmacia(String nombre, String direccion) {
+    public Farmacia(String nombre, String direccion, Administrador administrador) {
         this.nombre = nombre;
         this.direccion = direccion;
         LinkedList<Medicamento> listMedicamentos = new LinkedList<>();
         LinkedList<Paciente> listPacientes = new LinkedList<>();
+        this.administrador = administrador;
     }
 
     public String getNombre() {
@@ -58,5 +60,13 @@ public class Farmacia {
 
     public void setListMedicamentos(LinkedList<Medicamento> listMedicamentos) {
         this.listMedicamentos = listMedicamentos;
+    }
+
+    public Administrador getAdministrador() {
+        return administrador;
+    }
+
+    public void setAdministrador(Administrador administrador) {
+        this.administrador = administrador;
     }
 }
