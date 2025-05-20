@@ -298,41 +298,39 @@ public class Hospital {
 
     //CRUD Administrador
     public  boolean crearSala (Sala newSala){
-        for (Sala sala : listAdministradores) {
-            if(verificarAdministrador(newAdministrador.getId())){
-                listAdministradores.add(administrador);
+        for (Sala sala : listSalas) {
+            if(verificarAdministrador(newSala.getNumero())){
+                listSalas.add(sala);
                 return true;
             }
         }
         return false;
     }
 
-    public boolean verificarSala(String idAdministrador){
-        for (Administrador administrador : listAdministradores) {
-            if(administrador.getId().equals(idAdministrador)){
+    public boolean verificarSala(String numero){
+        for (Sala sala : listSalas) {
+            if(sala.getNumero().equals(numero)){
                 return false;
             }
         }
         return true;
     }
 
-    public Administrador buscarSala(String idAdministrador) {
-        for (Administrador administrador : listAdministradores) {
-            if(administrador.getId().equals(idAdministrador)){
-                return administrador;
+    public Sala buscarSala(String numero) {
+        for (Sala sala : listSalas) {
+            if(sala.getNumero().equals(numero)){
+                return sala;
             }
         }
         return null;
     }
 
-    public boolean actualizarSala(String idAdministradorActualizar,String nombreActualizado, String telefonoActualizado, String emailActualizado){
+    public boolean actualizarSala(String numero){
         boolean flag = false;
 
-        for(Administrador administrador: listAdministradores) {
-            if(administrador.getId().equals(idAdministradorActualizar)){
-                administrador.setNombre(nombreActualizado);
-                administrador.setTelefono(telefonoActualizado);
-                administrador.setEmail(emailActualizado);
+        for(Sala sala: listSalas) {
+            if(sala.getNumero().equals(numero)){
+                sala.setNumero(numero);
                 flag = true;
                 break;
             }
@@ -340,11 +338,11 @@ public class Hospital {
         return flag;
     }
 
-    public boolean eliminarSala(String idAdministradorEliminar) {
+    public boolean eliminarSala(String numero) {
         boolean flag = false;
-        for(Administrador administrador : listAdministradores) {
-            if(administrador.getId().equals(idAdministradorEliminar)){
-                listAdministradores.remove(idAdministradorEliminar);
+        for(Sala sala : listSalas) {
+            if(sala.getNumero().equals(numero)){
+                listSalas.remove(numero);
                 return true;
             }
         }
