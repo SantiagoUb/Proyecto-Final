@@ -12,14 +12,11 @@ public class HistorialMedico {
     private Administrador theAdministrador;
 
 
-    public HistorialMedico(String idHistorial, String notasAdicionales, Paciente paciente, Medico theMedico, Cita theCita, Administrador theAdministrador) {
+    public HistorialMedico(String idHistorial, String notasAdicionales, Medico theMedico) {
         this.idHistorial = idHistorial;
         this.descripcion = notasAdicionales;
-        this.paciente = paciente;
         listMedicamentos = new LinkedList<>();
         this.theMedico = theMedico;
-        this.theCita = theCita;
-        this.theAdministrador = theAdministrador;
     }
 
     public String getIdHistorial() {

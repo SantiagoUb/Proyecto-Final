@@ -10,12 +10,11 @@ public class Farmacia {
     private LinkedList<Medicamento> listMedicamentos;
     private Administrador administrador;
 
-    public Farmacia(String nombre, String direccion, Administrador administrador) {
+    public Farmacia(String nombre, String direccion) {
         this.nombre = nombre;
         this.direccion = direccion;
         LinkedList<Medicamento> listMedicamentos = new LinkedList<>();
         LinkedList<Paciente> listPacientes = new LinkedList<>();
-        this.administrador = administrador;
     }
 
     public String getNombre() {

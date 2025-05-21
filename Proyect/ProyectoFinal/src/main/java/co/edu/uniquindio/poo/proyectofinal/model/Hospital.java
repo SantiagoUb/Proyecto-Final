@@ -12,6 +12,18 @@ public class Hospital {
     private String nombre;
     private Farmacia farmacia;
 
+    public Hospital(String nombre){
+        this.nombre = nombre;
+        this.listPacientes = new LinkedList<>();
+        this.listHorarios = new LinkedList<>();
+        this.listMedicos = new LinkedList<>();
+        this.listSalas = new LinkedList<>();
+        this.listCitas = new LinkedList<>();
+        this.listHistorialMedicos = new LinkedList<>();
+        this.listAdministradores = new LinkedList<>();
+
+    }
+
     public Hospital(String nombre, Farmacia farmacia) {
         this.listPacientes = new LinkedList<>();
         this.listHorarios = new LinkedList<>();

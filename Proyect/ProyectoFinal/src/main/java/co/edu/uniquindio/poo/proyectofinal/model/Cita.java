@@ -1,23 +1,23 @@
 package co.edu.uniquindio.poo.proyectofinal.model;
 
 import java.time.LocalDate;
+import java.time.LocalTime;
 
 public class Cita {
 
     private String id;
     private LocalDate fecha;
-    private LocalDate hora;
+    private LocalTime hora;
     public EstadoCita estadoCita;
     private HistorialMedico theHistorialMedico;
     public Administrador administrador;
 
-    public Cita(String id, LocalDate fecha, LocalDate hora, HistorialMedico theHistorialMedico, EstadoCita estadoCita, Administrador administrador) {
+    public Cita(String id, LocalDate fecha, LocalTime hora, HistorialMedico theHistorialMedico, EstadoCita estadoCita) {
         this.id = id;
         this.fecha = fecha;
         this.hora = hora;
         this.estadoCita = estadoCita;
         this.theHistorialMedico = theHistorialMedico;
-        this.administrador = administrador;
     }
 
     public String getId() {
@@ -36,11 +36,11 @@ public class Cita {
         this.fecha = fecha;
     }
 
-    public LocalDate getHora() {
+    public LocalTime getHora() {
         return hora;
     }
 
-    public void setHora(LocalDate hora) {
+    public void setHora(LocalTime hora) {
         this.hora = hora;
     }
 
