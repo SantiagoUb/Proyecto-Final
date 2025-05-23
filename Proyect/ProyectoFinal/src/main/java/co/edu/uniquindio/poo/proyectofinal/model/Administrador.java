@@ -2,7 +2,7 @@ package co.edu.uniquindio.poo.proyectofinal.model;
 
 import java.util.LinkedList;
 
-public class Administrador extends Persona{
+public class Administrador extends Persona implements ICrudCita, IAdministrable{
     public LinkedList<Medico> listMedicos;
     public LinkedList<Paciente>listPacientes;
     public LinkedList<Sala>listSalas;
@@ -115,4 +115,117 @@ public class Administrador extends Persona{
     public void generarInforme(){
 
     }
+
+    @Override
+    public boolean crearCita(Cita newCita) {
+        for(Cita cita : listCitas){
+            if(verificarCita(newCita.getId())){
+                listCitas.add(cita);
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean verificarCita(String id){
+        for (Cita cita : listCitas) {
+            if(cita.getId().equals(id)){
+                return false;
+            }
+        }
+        return true;
+    }
+
+    @Override
+    public boolean eliminarCita(String id) {
+        boolean flag = false;
+
+        for(Cita cita : listCitas) {
+            if(cita.getId().equals(id)){
+                listCitas.remove(id);
+                return true;
+            }
+        }
+        return flag;
+    }
+
+    @Override
+    public boolean actualizarCita(String idActualizar, Cita citaActualizada) {
+        for (Cita cita : listCitas) {
+            if(cita.getId().equals(idActualizar)){
+                cita.setId(citaActualizada.getId());
+                cita.setFecha(citaActualizada.getFecha());
+                cita.setEstadoCita(citaActualizada.getEstadoCita());
+                cita.setHora(citaActualizada.getHora());
+                cita.setAdministrador(citaActualizada.getAdministrador());
+                cita.setTheHistorialMedico(citaActualizada.getTheHistorialMedico());
+                return true;
+            }
+        }
+        return false;
+    }
+
+    @Override
+    public Cita buscarCita(String id) {
+        for (Cita cita : listCitas) {
+            if (cita.getId().equals(id)) {
+                return cita;
+            }
+        }
+        return null;
+    }
+
+    @Override
+    public boolean eliminarMedico(String idEliminar) {
+        for (Medico medico : listMedicos) {
+            if(medico.getId().equals(idEliminar)){
+                listMedicos.remove(medico);
+                return true;
+            }
+        }
+        return false;
+    }
+    @Override
+    public boolean modificarMedico(String idMedico, Medico medicoModificado) {
+        for (Medico medico : listMedicos) {
+            if(medico.getId().equals(idMedico)){
+                medico.setNombre(medicoModificado.getNombre());
+                medico.setId(medicoModificado.getId());
+                medico.setEmail(medicoModificado.getEmail());
+                medico.setTelefono(medicoModificado.getTelefono());
+                medico.setEspecialidad(medicoModificado.getEspecialidad());
+                medico.setAdministrador(medicoModificado.getAdministrador());
+                return true;
+            }
+        }
+        return false;
+    }
+
+    @Override
+    public boolean modificarPaciente(String idPaciente,Paciente pacienteModificado){
+        boolean flag = false;
+
+        for(Paciente paciente: listPacientes) {
+            if(paciente.getId().equals(idPaciente)){
+                paciente.setNombre(pacienteModificado.getNombre());
+                paciente.setTelefono(pacienteModificado.getTelefono());
+                paciente.setEmail(pacienteModificado.getEmail());
+                flag = true;
+                break;
+            }
+        }
+        return flag;
+    }
+    @Override
+    public boolean eliminarPaciente(String idPacienteEliminar) {
+        boolean flag = false;
+        for(Paciente paciente : listPacientes) {
+            if(paciente.getId().equals(idPacienteEliminar)){
+                listPacientes.remove(idPacienteEliminar);
+                return true;
+            }
+        }
+        return flag;
+    }
+
 }

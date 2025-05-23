@@ -1,7 +1,7 @@
 package co.edu.uniquindio.poo.proyectofinal.model;
 
 import java.util.LinkedList;
-public class Hospital {
+public class Hospital implements ICrudCita, IAdministrable {
     private LinkedList<Paciente> listPacientes;
     private LinkedList<Horario> listHorarios;
     private LinkedList<Medico> listMedicos;
@@ -55,7 +55,7 @@ public class Hospital {
         }
         return true;
     }
-
+    @Override
     public boolean eliminarMedico(String idEliminar) {
         for (Medico medico : listMedicos) {
             if(medico.getId().equals(idEliminar)){
@@ -65,16 +65,16 @@ public class Hospital {
         }
         return false;
     }
-
-    public boolean actualizarMedico(String idActualizar, Medico medicoActualizado) {
+    @Override
+    public boolean modificarMedico(String idMedico, Medico medicoModificado) {
         for (Medico medico : listMedicos) {
-            if(medico.getId().equals(idActualizar)){
-                medico.setNombre(medicoActualizado.getNombre());
-                medico.setId(medicoActualizado.getId());
-                medico.setEmail(medicoActualizado.getEmail());
-                medico.setTelefono(medicoActualizado.getTelefono());
-                medico.setEspecialidad(medicoActualizado.getEspecialidad());
-                medico.setAdministrador(medicoActualizado.getAdministrador());
+            if(medico.getId().equals(idMedico)){
+                medico.setNombre(medicoModificado.getNombre());
+                medico.setId(medicoModificado.getId());
+                medico.setEmail(medicoModificado.getEmail());
+                medico.setTelefono(medicoModificado.getTelefono());
+                medico.setEspecialidad(medicoModificado.getEspecialidad());
+                medico.setAdministrador(medicoModificado.getAdministrador());
                 return true;
             }
         }
@@ -90,59 +90,8 @@ public class Hospital {
         return null;
     }
 
-    //CRUD Cita
-    public boolean crearCita(Cita newCita) {
-        for (Cita cita : listCitas) {
-            if(verificarCita(newCita.getId())){
-                listCitas.add(cita);
-                return true;
-            }
-        }
-        return false;
-    }
 
-    public boolean verificarCita(String idVerificar) {
-        for (Cita cita : listCitas) {
-            if(cita.getId().equals(idVerificar)){
-                return false;
-            }
-        }
-        return true;
-    }
 
-    public boolean eliminarCita(String idEliminar) {
-        for (Cita cita : listCitas) {
-            if(cita.getId().equals(idEliminar)){
-                listCitas.remove(cita);
-                return true;
-            }
-        }
-        return false;
-    }
-
-    public boolean actualizarCita(String idActualizar, Cita citaActualizada) {
-        for (Cita cita : listCitas) {
-            if(cita.getId().equals(idActualizar)){
-                cita.setId(citaActualizada.getId());
-                cita.setFecha(citaActualizada.getFecha());
-                cita.setEstadoCita(citaActualizada.getEstadoCita());
-                cita.setHora(citaActualizada.getHora());
-                cita.setAdministrador(citaActualizada.getAdministrador());
-                cita.setTheHistorialMedico(citaActualizada.getTheHistorialMedico());
-                return true;
-            }
-        }
-        return false;
-    }
-
-    public Cita buscarCita(String idBuscar) {
-        for (Cita cita : listCitas) {
-            if(cita.getId().equals(idBuscar)){
-                return cita;
-            }
-        }
-        return null;
-    }
 
     //CRUD HistorialMedico
     public boolean crearHistorialMedico(HistorialMedico newHistorialMedico) {
@@ -163,6 +112,7 @@ public class Hospital {
         }
         return true;
     }
+
 
     public boolean eliminarHistorialMedico(String idEliminar) {
         for (HistorialMedico historialMedico : listHistorialMedicos) {
@@ -226,22 +176,22 @@ public class Hospital {
         }
         return null;
     }
-
-    public boolean actualizarPaciente(String idPacienteActualizar,String nombreActualizado, String telefonoActualizado, String emailActualizado){
+    @Override
+    public boolean modificarPaciente(String idPaciente,Paciente pacienteModificado){
         boolean flag = false;
 
         for(Paciente paciente: listPacientes) {
-            if(paciente.getId().equals(idPacienteActualizar)){
-                paciente.setNombre(nombreActualizado);
-                paciente.setTelefono(telefonoActualizado);
-                paciente.setEmail(emailActualizado);
+            if(paciente.getId().equals(idPaciente)){
+                paciente.setNombre(pacienteModificado.getNombre());
+                paciente.setTelefono(pacienteModificado.getTelefono());
+                paciente.setEmail(pacienteModificado.getEmail());
                 flag = true;
                 break;
             }
         }
         return flag;
     }
-
+    @Override
     public boolean eliminarPaciente(String idPacienteEliminar) {
         boolean flag = false;
         for(Paciente paciente : listPacientes) {
@@ -359,6 +309,66 @@ public class Hospital {
             }
         }
         return flag;
+    }
+
+
+    @Override
+    public boolean crearCita(Cita newCita) {
+        for(Cita cita : listCitas){
+            if(verificarCita(newCita.getId())){
+                listCitas.add(cita);
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean verificarCita(String id){
+        for (Cita cita : listCitas) {
+            if(cita.getId().equals(id)){
+                return false;
+            }
+        }
+        return true;
+    }
+
+    @Override
+    public boolean eliminarCita(String id) {
+        boolean flag = false;
+
+        for(Cita cita : listCitas) {
+            if(cita.getId().equals(id)){
+                listCitas.remove(id);
+                return true;
+            }
+        }
+        return flag;
+    }
+
+    @Override
+    public boolean actualizarCita(String idActualizar, Cita citaActualizada) {
+        for (Cita cita : listCitas) {
+            if(cita.getId().equals(idActualizar)){
+                cita.setId(citaActualizada.getId());
+                cita.setFecha(citaActualizada.getFecha());
+                cita.setEstadoCita(citaActualizada.getEstadoCita());
+                cita.setHora(citaActualizada.getHora());
+                cita.setAdministrador(citaActualizada.getAdministrador());
+                cita.setTheHistorialMedico(citaActualizada.getTheHistorialMedico());
+                return true;
+            }
+        }
+        return false;
+    }
+
+    @Override
+    public Cita buscarCita(String id) {
+        for (Cita cita : listCitas) {
+            if (cita.getId().equals(id)) {
+                return cita;
+            }
+        }
+        return null;
     }
 
 
