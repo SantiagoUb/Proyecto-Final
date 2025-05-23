@@ -24,6 +24,7 @@ public class Administrador extends Persona implements ICrudCita, IAdministrable{
         this.farmacia = farmacia;
     }
 
+
     //CRUD Notificacion
     public boolean crearNotificacion(Notificacion newNotificacion){
         listNotificaciones.add(newNotificacion);
@@ -104,11 +105,38 @@ public class Administrador extends Persona implements ICrudCita, IAdministrable{
 
     }
 
-    public void asignarMedico(){
+    public boolean monitoreoMedico(String idMedico, String idPaciente){
+        boolean Asigno = false;
+        Medico medicoAsociado = null;
+        Paciente pacienteAsociado = null;
+
+        for(Medico medico:listMedicos){
+            if(medico.getId().equals(id) && medico.getDisponiblidadMedico() == DisponiblidadMedico.DISPONIBLE){
+                medicoAsociado = medico;
+            }
+        }
+        for (Paciente paciente:listPacientes){
+            if (paciente.getId().equals(idPaciente)){
+                pacienteAsociado = paciente;
+            }
+        }
+        if(medicoAsociado != null && pacienteAsociado != null){
+            medicoAsociado.getListPacientes().add(pacienteAsociado);
+            Asigno = true;
+        }
+        return Asigno;
 
     }
 
-    public void gestionarSala(){
+    public void gestionarSala(String numero){
+        for(Sala sala: listSalas){
+            if(sala.getNumero().equals(numero) && sala.getDisponibilidadSala() == DisponibilidadSala.DISPONIBLE){
+                sala.setDisponibilidadSala(DisponibilidadSala.NO_DISPONIBLE);
+                Horario gestionHorario = new Horario();
+
+            }
+
+        }
 
     }
 
@@ -176,6 +204,27 @@ public class Administrador extends Persona implements ICrudCita, IAdministrable{
     }
 
     @Override
+
+    public boolean crearMedico(Medico newMedico) {
+        for (Medico medico : listMedicos) {
+            if(verificarMedico(newMedico.getId())){
+                listMedicos.add(medico);
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean verificarMedico(String idVerificar) {
+        for (Medico medico : listMedicos) {
+            if(medico.getId().equals(idVerificar)){
+                return  false;
+            }
+        }
+        return true;
+    }
+
+    @Override
     public boolean eliminarMedico(String idEliminar) {
         for (Medico medico : listMedicos) {
             if(medico.getId().equals(idEliminar)){
@@ -200,6 +249,28 @@ public class Administrador extends Persona implements ICrudCita, IAdministrable{
         }
         return false;
     }
+
+    @Override
+
+    public  boolean crearPaciente (Paciente newpaciente){
+        for (Paciente paciente : listPacientes) {
+            if(verificarPaciente(newpaciente.getId())){
+                listPacientes.add(paciente);
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean verificarPaciente(String idPaciente){
+        for (Paciente paciente : listPacientes) {
+            if(paciente.getId().equals(idPaciente)){
+                return false;
+            }
+        }
+        return true;
+    }
+
 
     @Override
     public boolean modificarPaciente(String idPaciente,Paciente pacienteModificado){

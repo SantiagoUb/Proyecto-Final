@@ -7,28 +7,58 @@ public class Paciente extends Persona{
     private HistorialMedico theHistorialMedico;
     private LinkedList<Notificacion> listaNotificaciones;
     private Farmacia theFarmacia;
-    private Cita theCita;
+    private LinkedList<Cita> listaCitas;
     public Administrador administrador;
 
     public Paciente (String nombre, String id, String telefono, String email) {
         super(nombre, id, telefono, email);
-        this.listaNotificaciones = new LinkedList<>();
+        listaNotificaciones = new LinkedList<>();
+        listaCitas = new LinkedList<>();
     }
 
-    public void solicitarCita(){
-
+    public Paciente(String nombre, String id, String telefono, String email, HistorialMedico theHistorialMedico, Farmacia theFarmacia, Administrador administrador) {
+        super(nombre, id, telefono, email);
+        this.theHistorialMedico = theHistorialMedico;
+        this.theFarmacia = theFarmacia;
+        this.administrador = administrador;
     }
 
-    public void cancelarCita(){
-
+    public void solicitarCita(Cita newCita){
+        for(Cita cita : listaCitas){
+            if (verificarCita(newCita.getId())){
+                listaCitas.add( newCita);
+            }
+        }
     }
 
-    public void consultarHistorialPaciente(){
-
+    public boolean verificarCita(String idCita){
+        for (Cita cita : listaCitas){
+            if(cita.getId().equals(idCita)){
+                return  false;
+            }
+        }
+        return true;
     }
 
-    public void solicitarMedicamento(){
+    public void cancelarCita(String idCitaEliminar){
+        for (Cita cita : listaCitas){
+            if (cita.getId().equals(idCitaEliminar)){
+                listaCitas.remove(cita);
+            }
+        }
+    }
 
+    public String consultarHistorialPaciente(HistorialMedico historialMedico){
+        return historialMedico.toString();
+    }
+
+    public boolean solicitarMedicamento(String nombreMedicamento){
+        for(Medicamento medicamento: theHistorialMedico.getListMedicamentos()){
+            if(medicamento.getNombre().equals(nombreMedicamento)){
+                return  true;
+            }
+        }
+        return false;
     }
 
     public HistorialMedico getTheHistorialMedico() {
@@ -55,13 +85,6 @@ public class Paciente extends Persona{
         this.theFarmacia = theFarmacia;
     }
 
-    public Cita getTheCita() {
-        return theCita;
-    }
-
-    public void setTheCita(Cita theCita) {
-        this.theCita = theCita;
-    }
 
     public Administrador getAdministrador() {
         return administrador;
@@ -70,4 +93,13 @@ public class Paciente extends Persona{
     public void setAdministrador(Administrador administrador) {
         this.administrador = administrador;
     }
+
+    public LinkedList<Cita> getListaCitas() {
+        return listaCitas;
+    }
+
+    public void setListaCitas(LinkedList<Cita> listaCitas) {
+        this.listaCitas = listaCitas;
+    }
+
 }

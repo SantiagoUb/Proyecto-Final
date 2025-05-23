@@ -17,6 +17,14 @@ public class Farmacia {
         LinkedList<Paciente> listPacientes = new LinkedList<>();
     }
 
+    public Farmacia(String nombre, String direccion, Administrador administrador) {
+        this.nombre = nombre;
+        this.direccion = direccion;
+        this.listPacientes = listPacientes;
+        this.listMedicamentos = listMedicamentos;
+        this.administrador = administrador;
+    }
+
     public String getNombre() {
         return nombre;
     }

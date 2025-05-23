@@ -20,6 +20,15 @@ public class Cita {
         this.theHistorialMedico = theHistorialMedico;
     }
 
+    public Cita(String id, LocalDate fecha, LocalTime hora, EstadoCita estadoCita, HistorialMedico theHistorialMedico, Administrador administrador) {
+        this.id = id;
+        this.fecha = fecha;
+        this.hora = hora;
+        this.estadoCita = estadoCita;
+        this.theHistorialMedico = theHistorialMedico;
+        this.administrador = administrador;
+    }
+
     public String getId() {
         return id;
     }

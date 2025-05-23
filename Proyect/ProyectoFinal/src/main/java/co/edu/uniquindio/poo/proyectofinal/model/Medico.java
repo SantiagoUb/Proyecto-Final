@@ -5,13 +5,31 @@ import java.util.LinkedList;
 public class Medico extends Persona{
 
     private EspecialidadMedico especialidad;
-    private LinkedList<HistorialMedico> listHistoriales;
+    public  DisponiblidadMedico disponiblidadMedico;
+    private LinkedList<Paciente> listPacientes;
     public Administrador administrador;
+    private Horario horario;
 
-    public Medico(EspecialidadMedico especialidad, String nombre, String id, String telefono, String email) {
+
+    public Medico(EspecialidadMedico especialidad, String nombre, String id, String telefono, String email,DisponiblidadMedico disponiblidadMedico, Horario horario) {
         super(nombre, id, telefono, email);
         this.especialidad = especialidad;
-        LinkedList<HistorialMedico> listHistoriales = new LinkedList<>();
+        this.disponiblidadMedico = disponiblidadMedico;
+        this.horario = horario;
+        LinkedList<Paciente> listPacientes = new LinkedList<>();
+    }
+
+    public Medico(EspecialidadMedico especialidad, String nombre, String id, String telefono, String email,DisponiblidadMedico disponiblidadMedico) {
+        super(nombre, id, telefono, email);
+        this.especialidad = especialidad;
+        this.disponiblidadMedico = disponiblidadMedico;
+        LinkedList<Paciente> listPacientes = new LinkedList<>();
+    }
+
+    public Medico(String nombre, String id, String telefono, String email, EspecialidadMedico especialidad, Administrador administrador, Horario horario) {
+        super(nombre, id, telefono, email);
+        this.especialidad = especialidad;
+        this.administrador = administrador;
     }
 
     public EspecialidadMedico getEspecialidad() {
@@ -22,7 +40,28 @@ public class Medico extends Persona{
         this.especialidad = especialidad;
     }
 
-    public void registrarDiagnostico (){
+    public DisponiblidadMedico getDisponiblidadMedico() {
+        return disponiblidadMedico;
+    }
+
+    public void setDisponiblidadMedico(DisponiblidadMedico disponiblidadMedico) {
+        this.disponiblidadMedico = disponiblidadMedico;
+    }
+
+    public LinkedList<Paciente> getListPacientes() {
+        return listPacientes;
+    }
+
+    public void setListPacientes(LinkedList<Paciente> listPacientes) {
+        this.listPacientes = listPacientes;
+    }
+
+    public void registrarDiagnostico (String idHistorial){
+        for(HistorialMedico newHistorialMedico : administrador.listHistorialMedicos){
+            if(newHistorialMedico.getIdHistorial().equals(idHistorial)){
+                HistorialMedico historialTratamiento = new HistorialMedico(null, null);
+            }
+        }
 
     }
 
@@ -30,21 +69,17 @@ public class Medico extends Persona{
 
     }
 
-    public void consultarHistorialMedico () {
+    public HistorialMedico ConsultahistorialMedico (String indexIdPaciente) {
+        HistorialMedico historialBuscado = null;
+        for(Paciente newPaciente : listPacientes){
+            if(newPaciente.getId().equals(indexIdPaciente)){
+                historialBuscado = newPaciente.getTheHistorialMedico();
 
+            }
+        }
+        return historialBuscado;
     }
 
-    public void recetarMedicamento(){
-
-    }
-
-    public LinkedList<HistorialMedico> getListHistoriales() {
-        return listHistoriales;
-    }
-
-    public void setListHistoriales(LinkedList<HistorialMedico> listHistoriales) {
-        this.listHistoriales = listHistoriales;
-    }
 
     public Administrador getAdministrador() {
         return administrador;
@@ -52,5 +87,13 @@ public class Medico extends Persona{
 
     public void setAdministrador(Administrador administrador) {
         this.administrador = administrador;
+    }
+
+    public Horario getHorario() {
+        return horario;
+    }
+
+    public void setHorario(Horario horario) {
+        this.horario = horario;
     }
 }

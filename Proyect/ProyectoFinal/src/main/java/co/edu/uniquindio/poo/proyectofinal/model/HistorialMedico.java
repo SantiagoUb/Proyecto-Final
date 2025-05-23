@@ -4,7 +4,8 @@ import java.util.LinkedList;
 
 public class HistorialMedico {
     private String idHistorial;
-    private String descripcion;
+    private String diagnostico;
+    private String tratamiento;
     private LinkedList<Medicamento> listMedicamentos;
     private Paciente paciente;
     private Medico theMedico;
@@ -12,12 +13,20 @@ public class HistorialMedico {
     private Administrador theAdministrador;
 
 
-    public HistorialMedico(String idHistorial, String notasAdicionales, Medico theMedico) {
+    public HistorialMedico(String idHistorial,String diagnostico, String tratamiento, Medico theMedico) {
         this.idHistorial = idHistorial;
-        this.descripcion = notasAdicionales;
+        this.diagnostico = diagnostico;
+        this.tratamiento = tratamiento;
         listMedicamentos = new LinkedList<>();
         this.theMedico = theMedico;
     }
+
+    public HistorialMedico(String diagnostico, String tratamiento){
+        this.diagnostico = diagnostico;
+        this.tratamiento = tratamiento;
+    }
+
+
 
     public String getIdHistorial() {
         return idHistorial;
@@ -28,11 +37,11 @@ public class HistorialMedico {
     }
 
     public String getDescripcion() {
-        return descripcion;
+        return diagnostico;
     }
 
     public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
+        this.diagnostico = descripcion;
     }
 
     public void agregarDiagnostico (){
@@ -61,6 +70,22 @@ public class HistorialMedico {
 
     public void setListMedicamentos(LinkedList<Medicamento> listMedicamentos) {
         this.listMedicamentos = listMedicamentos;
+    }
+
+    public String getDiagnostico(){
+        return diagnostico;
+    }
+
+    public void setDiagnostico(String diagnostico) {
+        this.diagnostico = diagnostico;
+    }
+
+    public String getTratamiento(){
+        return tratamiento;
+    }
+
+    public void setTratamiento(String tratamiento) {
+        this.tratamiento = tratamiento;
     }
 
     public Paciente getPaciente() {
@@ -93,5 +118,18 @@ public class HistorialMedico {
 
     public void setTheAdministrador(Administrador theAdministrador) {
         this.theAdministrador = theAdministrador;
+    }
+
+    @Override
+    public String toString() {
+        return "Historial Medico{" +
+                "idHistorial='" + idHistorial + '\'' +
+                ", descripcion='" + diagnostico + '\'' +
+                ", listMedicamentos=" + listMedicamentos +
+                ", paciente=" + paciente +
+                ", theMedico=" + theMedico +
+                ", theCita=" + theCita +
+                ", theAdministrador=" + theAdministrador +
+                '}';
     }
 }

@@ -16,6 +16,10 @@ public class Horario {
         this.administrador = administrador;
     }
 
+    public Horario() {
+
+    }
+
     public String getDia() {
         return dia;
     }

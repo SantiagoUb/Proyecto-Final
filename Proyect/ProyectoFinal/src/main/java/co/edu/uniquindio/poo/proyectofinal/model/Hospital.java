@@ -36,7 +36,8 @@ public class Hospital implements ICrudCita, IAdministrable {
         this.farmacia = farmacia;
     }
 
-    //CRUD Medico
+    @Override
+
     public boolean crearMedico(Medico newMedico) {
         for (Medico medico : listMedicos) {
             if(verificarMedico(newMedico.getId())){
@@ -148,7 +149,8 @@ public class Hospital implements ICrudCita, IAdministrable {
         return null;
     }
 
-    //CRUD Paciente
+    @Override
+
     public  boolean crearPaciente (Paciente newpaciente){
         for (Paciente paciente : listPacientes) {
             if(verificarPaciente(newpaciente.getId())){
