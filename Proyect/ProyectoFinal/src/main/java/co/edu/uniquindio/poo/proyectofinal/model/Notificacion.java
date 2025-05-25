@@ -5,6 +5,8 @@ public class Notificacion {
     public String asunto;
     private Paciente paciente;
 
+    
+
     public Notificacion(String asunto, Paciente paciente) {
         this.asunto = asunto;
         this.paciente = paciente;

@@ -33,11 +33,13 @@ public class LogginViewController{
 
     @FXML
     private TextField txtUsuario;
+    Paciente paciente;
 
     @FXML
     void clickIngrear(ActionEvent event) throws IOException {
         if (!txtUsuario.getText().isEmpty() && !txtContra.getText().isEmpty()) {
             Persona pacienteEncontrado = pacienteController.buscarPaciente(txtUsuario.getText(), txtContra.getText());
+            paciente = (Paciente) pacienteEncontrado;
 
            if (pacienteEncontrado != null) {
                if (pacienteEncontrado instanceof Paciente) {
@@ -55,8 +57,10 @@ public class LogginViewController{
 
     public void abrirDashboardPaciente() throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/co/edu/uniquindio/poo/proyectofinal/dashboardPaciente.fxml"));
-        Scene scene = new Scene(loader.load(),200,200);
+        Scene scene = new Scene(loader.load(),1000,600);
         Stage stage = new Stage();
+        DashBoadPacienteVIewController dashBoadPacienteVIewController = loader.getController();
+        dashBoadPacienteVIewController.inicializarDashBoadPaciente(hospital,paciente);
         stage.setScene(scene);
         Stage stageCerrar = (Stage) btIngresar.getScene().getWindow();
         stageCerrar.close();

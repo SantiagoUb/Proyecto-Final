@@ -1,6 +1,47 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" />
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.poo.proyectofinal.viewController.DashBoadPacienteVIewController">
+   <children>
+      <HBox layoutX="-1.0" layoutY="1.0" prefHeight="600.0" prefWidth="1004.0">
+         <children>
+            <Pane prefHeight="200.0" prefWidth="200.0">
+               <children>
+                  <Button fx:id="btnCitas" layoutX="70.0" layoutY="132.0" mnemonicParsing="false" onAction="#clickCItas" prefHeight="53.0" prefWidth="130.0" text="Citas" />
+                  <Button fx:id="btnPerfil" layoutX="69.0" layoutY="52.0" mnemonicParsing="false" onAction="#clickPerfil" prefHeight="59.0" prefWidth="131.0" text="Perfil" />
+                  <Button fx:id="btnHistorial" layoutX="70.0" layoutY="210.0" mnemonicParsing="false" onAction="#clickHistorial" prefHeight="55.0" prefWidth="130.0" text="Historial" />
+               </children>
+            </Pane>
+            <Pane prefHeight="600.0" prefWidth="801.0">
+               <children>
+                  <Pane fx:id="panePerfil" prefHeight="601.0" prefWidth="801.0">
+                     <children>
+                        <TextField fx:id="txtNombreUsuario" layoutX="368.0" layoutY="113.0" />
+                        <Button fx:id="btnGuardar" layoutX="89.0" layoutY="509.0" mnemonicParsing="false" onAction="#clickGuardar" text="Guardar" />
+                        <TextField fx:id="txtId" layoutX="364.0" layoutY="173.0" />
+                        <TextField fx:id="txtTelefono" layoutX="362.0" layoutY="245.0" />
+                        <TextField fx:id="txtEmail" layoutX="362.0" layoutY="303.0" />
+                     </children>
+                  </Pane>
+                  <Pane fx:id="paneCita" prefHeight="597.0" prefWidth="803.0" visible="false">
+                     <children>
+                        <Label text="paneCitaEnProceso" />
+                     </children>
+                  </Pane>
+                  <Pane fx:id="paneHistorial" prefHeight="597.0" prefWidth="801.0" visible="false">
+                     <children>
+                        <Label layoutX="32.0" layoutY="32.0" text="paneHistorialEnProceso" />
+                     </children>
+                  </Pane>
+               </children>
+            </Pane>
+         </children>
+      </HBox>
+   </children>
+</AnchorPane>
