@@ -5,10 +5,17 @@ import java.util.LinkedList;
 public class Medico extends Persona{
 
     private EspecialidadMedico especialidad;
-    public  DisponibilidadMedico disponiblidadMedico;
+    private DisponibilidadMedico disponiblidadMedico;
     private LinkedList<Paciente> listPacientes;
     public Administrador administrador;
     private Horario horario;
+
+    public Medico(String nombre, String id, String telefono, String email,DisponibilidadMedico disponiblidadMedico, EspecialidadMedico especialidad) {
+        super(nombre, id, telefono, email);
+        this.especialidad = especialidad;
+        this.disponiblidadMedico = disponiblidadMedico;
+        LinkedList<Paciente> listPacientes = new LinkedList<>();
+    }
 
 
     public Medico(EspecialidadMedico especialidad, String nombre, String id, String telefono, String email,DisponibilidadMedico disponiblidadMedico, Horario horario) {
@@ -16,21 +23,8 @@ public class Medico extends Persona{
         this.especialidad = especialidad;
         this.disponiblidadMedico = disponiblidadMedico;
         this.horario = horario;
-        LinkedList<Paciente> listPacientes = new LinkedList<>();
     }
 
-    public Medico(EspecialidadMedico especialidad, String nombre, String id, String telefono, String email,DisponibilidadMedico disponiblidadMedico) {
-        super(nombre, id, telefono, email);
-        this.especialidad = especialidad;
-        this.disponiblidadMedico = disponiblidadMedico;
-        LinkedList<Paciente> listPacientes = new LinkedList<>();
-    }
-
-    public Medico(String nombre, String id, String telefono, String email, EspecialidadMedico especialidad, Administrador administrador, Horario horario) {
-        super(nombre, id, telefono, email);
-        this.especialidad = especialidad;
-        this.administrador = administrador;
-    }
 
 
     public EspecialidadMedico getEspecialidad() {

@@ -20,8 +20,8 @@ public class Farmacia {
     public Farmacia(String nombre, String direccion, Administrador administrador) {
         this.nombre = nombre;
         this.direccion = direccion;
-        this.listPacientes = listPacientes;
-        this.listMedicamentos = listMedicamentos;
+        this.listPacientes = new LinkedList<>();
+        this.listMedicamentos = new LinkedList<>();
         this.administrador = administrador;
     }
 
