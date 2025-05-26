@@ -6,7 +6,7 @@ public class Sala {
     public DisponiblidadSala disponibilidadSala;
     public Administrador administrador;
 
-    public Sala(String numero, boolean disponible, TipoSala tIpoSala,DisponiblidadSala disponibilidadSala, Administrador administrador) {
+    public Sala(String numero, TipoSala tipoSala,DisponiblidadSala disponibilidadSala, Administrador administrador) {
         this.numero = numero;
         this.tipoSala = tipoSala;
         this.disponibilidadSala = disponibilidadSala;
@@ -35,10 +35,6 @@ public class Sala {
 
     public void setTipoSala(TipoSala tipoSala) {
         this.tipoSala = tipoSala;
-    }
-
-    public void liberarSala (){
-
     }
 
     public Administrador getAdministrador() {

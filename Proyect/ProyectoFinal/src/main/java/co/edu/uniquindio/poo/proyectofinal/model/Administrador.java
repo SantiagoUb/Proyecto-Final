@@ -101,10 +101,6 @@ public class Administrador extends Persona implements ICrudCita, IAdministrable{
         this.listHistorialMedicos = listHistorialMedicos;
     }
 
-    public void gestionarUsuarios(){
-
-    }
-
     public boolean monitoreoMedico(String idMedico, String idPaciente){
         boolean Asigno = false;
         Medico medicoAsociado = null;
@@ -130,7 +126,7 @@ public class Administrador extends Persona implements ICrudCita, IAdministrable{
 
     public void gestionarSala(String numero){
         for(Sala sala: listSalas){
-            if(sala.getNumero().equals(numero) && sala.getDisponibilidadSala() == DisponiblidadSala.NO_DISPONIBLE.DISPONIBLE){
+            if(sala.getNumero().equals(numero) && sala.getDisponibilidadSala() == DisponiblidadSala.DISPONIBLE){
                 sala.setDisponibilidadSala(DisponiblidadSala.NO_DISPONIBLE);
                 Horario gestionHorario = new Horario();
 
@@ -140,8 +136,28 @@ public class Administrador extends Persona implements ICrudCita, IAdministrable{
 
     }
 
-    public void generarInforme(){
+    // Reporte de ocupacion del hospital
+    @Override
+    public String toString() {
+        LinkedList<Sala> salasDisponibles = new LinkedList<>();
+        for(Sala sala:listSalas){
+            if(sala.getDisponibilidadSala() == DisponiblidadSala.DISPONIBLE){
+                salasDisponibles.add(sala);
+            }
+        }
+        return "Administrador{" + nombre +
+                ", lista de salas disponibles =" + salasDisponibles +
+                '}';
+    }
 
+    public boolean liberarSala (String numeroSala) {
+        for(Sala sala: listSalas){
+            if(sala.getNumero().equals(numeroSala) && sala.getDisponibilidadSala() == DisponiblidadSala.NO_DISPONIBLE){
+                sala.setDisponibilidadSala(DisponiblidadSala.DISPONIBLE);
+                return true;
+            }
+        }
+        return false;
     }
 
     @Override
