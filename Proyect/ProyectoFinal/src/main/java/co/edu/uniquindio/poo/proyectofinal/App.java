@@ -31,13 +31,13 @@ public class App extends Application {
     public Hospital inicializarDatosQuemados(){
 
         Hospital hospital = new Hospital("Hospital UQ");
-        Medico medico = new Medico(EspecialidadMedico.GENERAL, "Jhanca", "1383315", "32168498", "juasn@jusam", DisponiblidadMedico.DISPONIBLE);
+        Medico medico = new Medico("hoioi", "ih7y2", "817337", "@hiw´j", DisponibilidadMedico.DISPONIBLE, EspecialidadMedico.GENERAL);
         Farmacia farmacia = new Farmacia("Farmacia UQ", "Cra 19 y ya ");
         Paciente paciente = new Paciente("Oscar","123","613153","jausna@loque");
         HistorialMedico historialMedico = new HistorialMedico("12256", "ninguna");
         historialMedico.setPaciente(paciente);
         paciente.setTheHistorialMedico(historialMedico);
-        Cita cita = new Cita("01", LocalDate.now(), LocalTime.now(),historialMedico,EstadoCita.PENDIENTE);
+        Cita cita = new Cita("01", LocalDate.now(), LocalTime.now(),historialMedico,EstadoCita.CONFIRMADO);
         Administrador administrador = new Administrador("Tomas","10718302", "3214684", "oscart.aristizabalv@loquesea",farmacia);
         farmacia.setAdministrador(administrador);
         paciente.setAdministrador(administrador);
