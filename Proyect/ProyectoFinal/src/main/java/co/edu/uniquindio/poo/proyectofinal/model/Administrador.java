@@ -111,7 +111,7 @@ public class Administrador extends Persona implements ICrudCita, IAdministrable{
         Paciente pacienteAsociado = null;
 
         for(Medico medico:listMedicos){
-            if(medico.getId().equals(id) && medico.getDisponiblidadMedico() == DisponiblidadMedico.DISPONIBLE){
+            if(medico.getId().equals(id) && medico.getDisponiblidadMedico() == DisponibilidadMedico.DISPONIBLE){
                 medicoAsociado = medico;
             }
         }
@@ -130,8 +130,8 @@ public class Administrador extends Persona implements ICrudCita, IAdministrable{
 
     public void gestionarSala(String numero){
         for(Sala sala: listSalas){
-            if(sala.getNumero().equals(numero) && sala.getDisponibilidadSala() == DisponibilidadSala.DISPONIBLE){
-                sala.setDisponibilidadSala(DisponibilidadSala.NO_DISPONIBLE);
+            if(sala.getNumero().equals(numero) && sala.getDisponibilidadSala() == DisponiblidadSala.NO_DISPONIBLE.DISPONIBLE){
+                sala.setDisponibilidadSala(DisponiblidadSala.NO_DISPONIBLE);
                 Horario gestionHorario = new Horario();
 
             }

@@ -5,13 +5,13 @@ import java.util.LinkedList;
 public class Medico extends Persona{
 
     private EspecialidadMedico especialidad;
-    public  DisponiblidadMedico disponiblidadMedico;
+    public  DisponibilidadMedico disponiblidadMedico;
     private LinkedList<Paciente> listPacientes;
     public Administrador administrador;
     private Horario horario;
 
 
-    public Medico(EspecialidadMedico especialidad, String nombre, String id, String telefono, String email,DisponiblidadMedico disponiblidadMedico, Horario horario) {
+    public Medico(EspecialidadMedico especialidad, String nombre, String id, String telefono, String email,DisponibilidadMedico disponiblidadMedico, Horario horario) {
         super(nombre, id, telefono, email);
         this.especialidad = especialidad;
         this.disponiblidadMedico = disponiblidadMedico;
@@ -19,7 +19,7 @@ public class Medico extends Persona{
         LinkedList<Paciente> listPacientes = new LinkedList<>();
     }
 
-    public Medico(EspecialidadMedico especialidad, String nombre, String id, String telefono, String email,DisponiblidadMedico disponiblidadMedico) {
+    public Medico(EspecialidadMedico especialidad, String nombre, String id, String telefono, String email,DisponibilidadMedico disponiblidadMedico) {
         super(nombre, id, telefono, email);
         this.especialidad = especialidad;
         this.disponiblidadMedico = disponiblidadMedico;
@@ -40,11 +40,11 @@ public class Medico extends Persona{
         this.especialidad = especialidad;
     }
 
-    public DisponiblidadMedico getDisponiblidadMedico() {
+    public DisponibilidadMedico getDisponiblidadMedico() {
         return disponiblidadMedico;
     }
 
-    public void setDisponiblidadMedico(DisponiblidadMedico disponiblidadMedico) {
+    public void setDisponiblidadMedico(DisponibilidadMedico disponiblidadMedico) {
         this.disponiblidadMedico = disponiblidadMedico;
     }
 

@@ -3,10 +3,10 @@ package co.edu.uniquindio.poo.proyectofinal.model;
 public class Sala {
     private String numero;
     public TipoSala tipoSala;
-    public DisponibilidadSala disponibilidadSala;
+    public DisponiblidadSala disponibilidadSala;
     public Administrador administrador;
 
-    public Sala(String numero, boolean disponible, TipoSala tIpoSala,DisponibilidadSala disponibilidadSala, Administrador administrador) {
+    public Sala(String numero, boolean disponible, TipoSala tIpoSala,DisponiblidadSala disponibilidadSala, Administrador administrador) {
         this.numero = numero;
         this.tipoSala = tipoSala;
         this.disponibilidadSala = disponibilidadSala;
@@ -21,11 +21,11 @@ public class Sala {
         this.numero = numero;
     }
 
-    public DisponibilidadSala getDisponibilidadSala() {
+    public DisponiblidadSala getDisponibilidadSala() {
         return disponibilidadSala;
     }
 
-    public void setDisponibilidadSala(DisponibilidadSala disponibilidadSala) {
+    public void setDisponibilidadSala(DisponiblidadSala disponibilidadSala) {
         this.disponibilidadSala = disponibilidadSala;
     }
 
