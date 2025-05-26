@@ -1,14 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="co.edu.uniquindio.poo.proyectofinal.CrearMedico"
-            prefHeight="400.0" prefWidth="600.0">
-
-</AnchorPane>
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #99D9EA;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <TextField layoutX="215.0" layoutY="116.0" prefHeight="25.0" prefWidth="181.0" promptText="Ingrese el nombre del medico" />
+      <Label fx:id="Text_BienvenidoAdministrador" layoutX="214.0" layoutY="45.0" text="Registra el medico" textFill="#2b2828">
+         <font>
+            <Font name="System Bold" size="21.0" />
+         </font>
+      </Label>
+      <TextField layoutX="215.0" layoutY="151.0" prefHeight="25.0" prefWidth="181.0" promptText="Ingrese la cedula" />
+      <TextField layoutX="215.0" layoutY="188.0" prefHeight="25.0" prefWidth="181.0" promptText="Ingrese el telefono" />
+      <TextField layoutX="215.0" layoutY="231.0" prefHeight="25.0" prefWidth="181.0" promptText="Ingrese el email" />
+      <ComboBox layoutX="214.0" layoutY="276.0" prefHeight="25.0" prefWidth="183.0" promptText="Especialidad" />
+   </children>
+</Pane>
