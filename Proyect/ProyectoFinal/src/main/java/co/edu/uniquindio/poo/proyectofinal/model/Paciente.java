@@ -41,11 +41,7 @@ public class Paciente extends Persona{
     }
 
     public void cancelarCita(String idCitaEliminar){
-        for (Cita cita : listaCitas){
-            if (cita.getId().equals(idCitaEliminar)){
-                listaCitas.remove(cita);
-            }
-        }
+        listaCitas.removeIf(cita -> cita.getId().equals(idCitaEliminar));
     }
 
     public String consultarHistorialPaciente(HistorialMedico historialMedico){

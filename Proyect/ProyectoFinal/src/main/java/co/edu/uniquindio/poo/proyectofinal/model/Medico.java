@@ -32,6 +32,7 @@ public class Medico extends Persona{
         this.administrador = administrador;
     }
 
+
     public EspecialidadMedico getEspecialidad() {
         return especialidad;
     }

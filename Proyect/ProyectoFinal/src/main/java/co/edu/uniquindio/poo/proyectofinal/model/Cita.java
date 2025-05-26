@@ -29,6 +29,18 @@ public class Cita {
         this.administrador = administrador;
     }
 
+    @Override
+    public String toString() {
+        return "Cita{" +
+                "id='" + id + '\'' +
+                ", fecha=" + fecha +
+                ", hora=" + hora +
+                ", estadoCita=" + estadoCita +
+                ", theHistorialMedico=" + theHistorialMedico +
+                ", administrador=" + administrador +
+                '}';
+    }
+
     public String getId() {
         return id;
     }
