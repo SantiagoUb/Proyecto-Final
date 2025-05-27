@@ -23,29 +23,24 @@ public class Paciente extends Persona{
         this.administrador = administrador;
     }
 
-    public void solicitarCita(Cita newCita){
+    public boolean solicitarCita(String idCita){
         for(Cita cita : listaCitas){
-            if (verificarCita(newCita.getId())){
-                listaCitas.add( newCita);
+            if (cita.getId().equals(idCita)){
+                listaCitas.add( cita);
+                return true;
             }
         }
+        return false;
     }
 
-    public boolean verificarCita(String idCita){
-        for (Cita cita : listaCitas){
-            if(cita.getId().equals(idCita)){
-                return  false;
-            }
-        }
+
+    public boolean cancelarCita(String idCitaEliminar){
+        listaCitas.removeIf(cita -> cita.getId().equals(idCitaEliminar));
         return true;
     }
 
-    public void cancelarCita(String idCitaEliminar){
-        listaCitas.removeIf(cita -> cita.getId().equals(idCitaEliminar));
-    }
-
-    public String consultarHistorialPaciente(HistorialMedico historialMedico){
-        return historialMedico.toString();
+    public String consultarHistorialPaciente(){
+        return theHistorialMedico.toString();
     }
 
     public boolean solicitarMedicamento(String nombreMedicamento){
