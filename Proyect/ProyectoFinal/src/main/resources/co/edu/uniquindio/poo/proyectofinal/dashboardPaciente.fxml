@@ -20,11 +20,12 @@
                   <Button fx:id="btnHistorial" layoutX="44.0" layoutY="208.0" mnemonicParsing="false" onAction="#clickHistorial" prefHeight="55.0" prefWidth="130.0" text="Historial" />
                   <Separator layoutX="193.0" layoutY="2.0" orientation="VERTICAL" prefHeight="597.0" prefWidth="14.0" />
                   <Label layoutX="38.0" layoutY="20.0" prefHeight="17.0" prefWidth="131.0" text="BIENVENIDO PACIENTE" />
+                  <Button fx:id="btnCerrar" layoutX="66.0" layoutY="547.0" mnemonicParsing="false" onAction="#clickCerrar" text="Cerrar Sesion" />
                </children>
             </Pane>
             <Pane prefHeight="600.0" prefWidth="801.0">
                <children>
-                  <Pane fx:id="panePerfil" prefHeight="601.0" prefWidth="801.0">
+                  <Pane fx:id="panePerfil" prefHeight="601.0" prefWidth="801.0" visible="false">
                      <children>
                         <TextField fx:id="txtNombreUsuario" layoutX="368.0" layoutY="113.0" />
                         <Button fx:id="btnGuardar" layoutX="89.0" layoutY="509.0" mnemonicParsing="false" onAction="#clickGuardar" text="Guardar" />
@@ -40,9 +41,9 @@
                         <ImageView fitHeight="300.0" fitWidth="200.0" layoutX="61.0" layoutY="51.0" pickOnBounds="true" preserveRatio="true" />
                      </children>
                   </Pane>
-                  <Pane fx:id="paneCita" prefHeight="597.0" prefWidth="803.0" visible="false">
+                  <Pane fx:id="paneCita" prefHeight="597.0" prefWidth="803.0">
                      <children>
-                        <Label text="paneCitaEnProceso" />
+                        <Button fx:id="btnSolicitar" layoutX="64.0" layoutY="66.0" mnemonicParsing="false" onAction="#clickSolicitar" text="Solicitud de Cita" />
                      </children>
                   </Pane>
                   <Pane fx:id="paneHistorial" prefHeight="597.0" prefWidth="801.0" visible="false">

@@ -6,13 +6,12 @@ import org.junit.jupiter.api.Test;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
-import java.util.logging.Logger;
+import java.util.LinkedList;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class AdministradorTest {
 
-    private static final Logger LOG = Logger.getLogger(AdministradorTest.class.getName());
     Hospital hospitalTest;
     Farmacia farmaciaTest;
     Administrador administrador;
@@ -108,6 +107,7 @@ class AdministradorTest {
         notificacion3 = new Notificacion("Campaña de vacunación", paciente3);
 
         // Agregar todos los objetos a la clase principal hospital
+
         hospitalTest.getListAdministradores().add(administrador);
 
         hospitalTest.getListMedicos().add(medico1);
@@ -140,6 +140,8 @@ class AdministradorTest {
         hospitalTest.getListHorarios().add(horario3);
 
         // Agregar medicametos a la farmacia
+        LinkedList<Medicamento> listMedicamentos = new LinkedList<>();
+        farmaciaTest.setListMedicamentos(listMedicamentos);
         farmaciaTest.getListMedicamentos().add(medicamento1);
         farmaciaTest.getListMedicamentos().add(medicamento2);
         farmaciaTest.getListMedicamentos().add(medicamento3);
@@ -181,18 +183,18 @@ class AdministradorTest {
     @Test
     @DisplayName("monitoreo y asignacion de medicos")
     public void monitoreoYAsignacionMedicosTest(){
-        LOG.info("iniciando test monitoreoYAsignacionMedicos");
+
 
         boolean resultado = administrador.monitoreoYAsignacionMedico("MED001", "P001" );
-        assertTrue(resultado);
+        assertTrue(medico1.getListPacientes().contains(paciente1));
 
-        LOG.info("Finalizando test monitoreoYAsignacionMedicos");
+
     }
 
     @Test
     @DisplayName("gestion de salas y horarios de atencion")
     public void gestionDeSalasYHorariosDeAtencionTest(){
-        LOG.info("iniciando test gestionDeSalasYHorariosDeAtencion");
+
 
         boolean resultado = administrador.ocuparSala("101");
         assertTrue(resultado);
@@ -203,26 +205,26 @@ class AdministradorTest {
         String cadena = administrador.verHorariosAtencion();
         assertNotNull(cadena);
 
-        LOG.info("finalizando test gestionDeSalasYHorariosDeAtencion");
+
 
     }
 
     @Test
     @DisplayName("Reporte de citas y ocupacion de citas")
     public void ReporteDeCitasYOcupacionDeCitasTest(){
-        LOG.info("iniciando test reporteDeCitasYOcupacion");
+
 
         String resultado = administrador.generacionReporte();
         assertNotNull(resultado);
 
-        LOG.info("finalizando test reporteDeCitasYOcupacion");
+
 
     }
 
     @Test
     @DisplayName("Registro, modificación y eliminacion de médicos y pacientes")
     public void RegistroModificacionYEliminacionTest(){
-        LOG.info("iniciando test registroModificacionYEliminacion");
+
 
         Medico newMedico = new Medico("Marcos", "M0010", "555-002", "Mar@hospital.com", DisponibilidadMedico.DISPONIBLE, EspecialidadMedico.GENERAL);
         boolean crear = administrador.crearMedico(newMedico);
@@ -235,7 +237,7 @@ class AdministradorTest {
         boolean eliminar = administrador.eliminarMedico("MED001");
         assertTrue(eliminar);
 
-        LOG.info("finalizando test registroModificacionYEliminacion");
+
 
     }
 

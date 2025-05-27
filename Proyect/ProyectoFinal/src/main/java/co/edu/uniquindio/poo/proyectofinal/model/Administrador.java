@@ -39,12 +39,12 @@ public class Administrador extends Persona implements ICrudCita, IAdministrable{
 
     // monitoreo de disponibilidad de medicos y asignacion de pacientes
     public boolean monitoreoYAsignacionMedico(String idMedico, String idPaciente){
-        boolean Asigno = false;
+
         Medico medicoAsociado = null;
         Paciente pacienteAsociado = null;
 
         for(Medico medico:listMedicos){
-            if(medico.getId().equals(id) && medico.getDisponiblidadMedico() == DisponibilidadMedico.DISPONIBLE){
+            if(medico.getId().equals(idMedico) && medico.getDisponiblidadMedico() == DisponibilidadMedico.DISPONIBLE){
                 medicoAsociado = medico;
             }
         }
@@ -56,9 +56,9 @@ public class Administrador extends Persona implements ICrudCita, IAdministrable{
         if(medicoAsociado != null && pacienteAsociado != null){
             medicoAsociado.getListPacientes().add(pacienteAsociado);
             medicoAsociado.setDisponiblidadMedico(DisponibilidadMedico.NO_DISPONIBLE);
-            Asigno = true;
+            return true;
         }
-        return Asigno;
+        return false;
 
     }
 
