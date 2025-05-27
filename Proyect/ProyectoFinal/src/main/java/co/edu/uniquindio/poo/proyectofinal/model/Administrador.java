@@ -37,6 +37,248 @@ public class Administrador extends Persona implements ICrudCita, IAdministrable{
     }
 
 
+    // monitoreo de disponibilidad de medicos y asignacion de pacientes
+    public boolean monitoreoYAsignacionMedico(String idMedico, String idPaciente){
+        boolean Asigno = false;
+        Medico medicoAsociado = null;
+        Paciente pacienteAsociado = null;
+
+        for(Medico medico:listMedicos){
+            if(medico.getId().equals(id) && medico.getDisponiblidadMedico() == DisponibilidadMedico.DISPONIBLE){
+                medicoAsociado = medico;
+            }
+        }
+        for (Paciente paciente:listPacientes){
+            if (paciente.getId().equals(idPaciente)){
+                pacienteAsociado = paciente;
+            }
+        }
+        if(medicoAsociado != null && pacienteAsociado != null){
+            medicoAsociado.getListPacientes().add(pacienteAsociado);
+            medicoAsociado.setDisponiblidadMedico(DisponibilidadMedico.NO_DISPONIBLE);
+            Asigno = true;
+        }
+        return Asigno;
+
+    }
+
+    // Reporte de citas y ocupacion del hospital
+    public String generacionReporte() {
+        LinkedList<Sala> salasDisponibles = new LinkedList<>();
+        for(Sala sala:listSalas){
+            if(sala.getDisponibilidadSala() == DisponiblidadSala.DISPONIBLE){
+                salasDisponibles.add(sala);
+            }
+        }
+
+        LinkedList<Cita> citasConfirmadas = new LinkedList<>();
+        for (Cita cita:listCitas){
+            if(cita.getEstadoCita().equals(EstadoCita.CONFIRMADO)){
+                citasConfirmadas.add(cita);
+            }
+        }
+        return "Administrador " + nombre +
+                "lista de salas disponibles =" + salasDisponibles + "citas confirmadas " + citasConfirmadas;
+    }
+
+    // Gestion de salas y horarios de atencion
+    public boolean ocuparSala(String numero){
+        for (Sala sala:listSalas){
+            if(sala.getNumero().equals(numero) && sala.getDisponibilidadSala() == DisponiblidadSala.DISPONIBLE){
+                sala.setDisponibilidadSala(DisponiblidadSala.NO_DISPONIBLE);
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean liberarSala (String numeroSala) {
+        for(Sala sala: listSalas){
+            if(sala.getNumero().equals(numeroSala) && sala.getDisponibilidadSala() == DisponiblidadSala.NO_DISPONIBLE){
+                sala.setDisponibilidadSala(DisponiblidadSala.DISPONIBLE);
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public String verHorariosAtencion(){
+        LinkedList<Horario> horariosConsulta = new LinkedList<>();
+        for(Horario horario:listHorarios){
+            if(horario.getTipoHorario() == TipoHorario.CONSULTA){
+                horariosConsulta.add(horario);
+            }
+        }
+
+        LinkedList<Horario> horariosAtencion = new LinkedList<>();
+        for(Horario horario: listHorarios){
+            if(horario.getTipoHorario() == TipoHorario.ATENCION){
+                horariosAtencion.add(horario);
+            }
+        }
+        return  "los horarios de consulta son " + horariosConsulta + " los horarios de atencion son " + horariosAtencion;
+    }
+
+    // CRUD para cita
+    @Override
+    public boolean crearCita(Cita newCita) {
+        for(Cita cita : listCitas){
+            if(verificarCita(newCita.getId())){
+                listCitas.add(cita);
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean verificarCita(String id){
+        for (Cita cita : listCitas) {
+            if(cita.getId().equals(id)){
+                return false;
+            }
+        }
+        return true;
+    }
+
+    @Override
+    public boolean eliminarCita(String id) {
+        boolean flag = false;
+
+        for(Cita cita : listCitas) {
+            if(cita.getId().equals(id)){
+                listCitas.remove(cita);
+                return true;
+            }
+        }
+        return flag;
+    }
+
+    @Override
+    public boolean actualizarCita(String idActualizar, Cita citaActualizada) {
+        boolean actualizar = false;
+        for (Cita cita : listCitas) {
+            if(cita.getId().equals(idActualizar)){
+                cita.setId(citaActualizada.getId());
+                cita.setFecha(citaActualizada.getFecha());
+                cita.setEstadoCita(citaActualizada.getEstadoCita());
+                cita.setHora(citaActualizada.getHora());
+                cita.setAdministrador(citaActualizada.getAdministrador());
+                cita.setTheHistorialMedico(citaActualizada.getTheHistorialMedico());
+                actualizar = true;
+                break;
+            }
+        }
+        return actualizar;
+    }
+
+    @Override
+    public Cita buscarCita(String id) {
+        for (Cita cita : listCitas) {
+            if (cita.getId().equals(id)) {
+                return cita;
+            }
+        }
+        return null;
+    }
+
+
+    // CRUD para medico
+    @Override
+    public boolean crearMedico(Medico newMedico) {
+        for (Medico medico : listMedicos) {
+            if(verificarMedico(newMedico.getId())){
+                listMedicos.add(medico);
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean verificarMedico(String idVerificar) {
+        for (Medico medico : listMedicos) {
+            if(medico.getId().equals(idVerificar)){
+                return  false;
+            }
+        }
+        return true;
+    }
+
+    @Override
+    public boolean eliminarMedico(String idEliminar) {
+        for (Medico medico : listMedicos) {
+            if(medico.getId().equals(idEliminar)){
+                listMedicos.remove(medico);
+                return true;
+            }
+        }
+        return false;
+    }
+    @Override
+    public boolean modificarMedico(String idMedico, Medico medicoModificado) {
+        boolean modificar = false;
+        for (Medico medico : listMedicos) {
+            if(medico.getId().equals(idMedico)){
+                medico.setNombre(medicoModificado.getNombre());
+                medico.setId(medicoModificado.getId());
+                medico.setEmail(medicoModificado.getEmail());
+                medico.setTelefono(medicoModificado.getTelefono());
+                medico.setEspecialidad(medicoModificado.getEspecialidad());
+                medico.setAdministrador(medicoModificado.getAdministrador());
+                modificar = true;
+                break;
+            }
+        }
+        return modificar;
+    }
+
+    // CRUD para paciente
+    @Override
+    public  boolean crearPaciente (Paciente newpaciente){
+        for (Paciente paciente : listPacientes) {
+            if(verificarPaciente(newpaciente.getId())){
+                listPacientes.add(paciente);
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean verificarPaciente(String idPaciente){
+        for (Paciente paciente : listPacientes) {
+            if(paciente.getId().equals(idPaciente)){
+                return false;
+            }
+        }
+        return true;
+    }
+
+
+    @Override
+    public boolean modificarPaciente(String idPaciente,Paciente pacienteModificado){
+
+        for(Paciente paciente: listPacientes) {
+            if(paciente.getId().equals(idPaciente)){
+                paciente.setNombre(pacienteModificado.getNombre());
+                paciente.setTelefono(pacienteModificado.getTelefono());
+                paciente.setEmail(pacienteModificado.getEmail());
+                return true;
+            }
+        }
+        return false;
+    }
+    @Override
+    public boolean eliminarPaciente(String idPacienteEliminar) {
+        boolean flag = false;
+        for(Paciente paciente : listPacientes) {
+            if(paciente.getId().equals(idPacienteEliminar)){
+                listPacientes.remove(paciente);
+                return true;
+            }
+        }
+        return flag;
+    }
+
+
     public LinkedList<Medico> getListMedicos() {
         return listMedicos;
     }
@@ -101,220 +343,5 @@ public class Administrador extends Persona implements ICrudCita, IAdministrable{
         this.listHistorialMedicos = listHistorialMedicos;
     }
 
-    // monitoreo de disponibilidad de medicos y asignacion de pacientes
-    public boolean monitoreoYAsignacionMedico(String idMedico, String idPaciente){
-        boolean Asigno = false;
-        Medico medicoAsociado = null;
-        Paciente pacienteAsociado = null;
-
-        for(Medico medico:listMedicos){
-            if(medico.getId().equals(id) && medico.getDisponiblidadMedico() == DisponibilidadMedico.DISPONIBLE){
-                medicoAsociado = medico;
-            }
-        }
-        for (Paciente paciente:listPacientes){
-            if (paciente.getId().equals(idPaciente)){
-                pacienteAsociado = paciente;
-            }
-        }
-        if(medicoAsociado != null && pacienteAsociado != null){
-            medicoAsociado.getListPacientes().add(pacienteAsociado);
-            medicoAsociado.setDisponiblidadMedico(DisponibilidadMedico.NO_DISPONIBLE);
-            Asigno = true;
-        }
-        return Asigno;
-
-    }
-
-    public void gestionarSala(String numero){
-        for(Sala sala: listSalas){
-            if(sala.getNumero().equals(numero) && sala.getDisponibilidadSala() == DisponiblidadSala.DISPONIBLE){
-                sala.setDisponibilidadSala(DisponiblidadSala.NO_DISPONIBLE);
-                Horario gestionHorario = new Horario();
-
-            }
-
-        }
-
-    }
-
-    // Reporte de ocupacion del hospital
-    @Override
-    public String toString() {
-        LinkedList<Sala> salasDisponibles = new LinkedList<>();
-        for(Sala sala:listSalas){
-            if(sala.getDisponibilidadSala() == DisponiblidadSala.DISPONIBLE){
-                salasDisponibles.add(sala);
-            }
-        }
-        return "Administrador{" + nombre +
-                ", lista de salas disponibles =" + salasDisponibles +
-                '}';
-    }
-
-    public boolean liberarSala (String numeroSala) {
-        for(Sala sala: listSalas){
-            if(sala.getNumero().equals(numeroSala) && sala.getDisponibilidadSala() == DisponiblidadSala.NO_DISPONIBLE){
-                sala.setDisponibilidadSala(DisponiblidadSala.DISPONIBLE);
-                return true;
-            }
-        }
-        return false;
-    }
-
-    @Override
-    public boolean crearCita(Cita newCita) {
-        for(Cita cita : listCitas){
-            if(verificarCita(newCita.getId())){
-                listCitas.add(cita);
-                return true;
-            }
-        }
-        return false;
-    }
-
-    public boolean verificarCita(String id){
-        for (Cita cita : listCitas) {
-            if(cita.getId().equals(id)){
-                return false;
-            }
-        }
-        return true;
-    }
-
-    @Override
-    public boolean eliminarCita(String id) {
-        boolean flag = false;
-
-        for(Cita cita : listCitas) {
-            if(cita.getId().equals(id)){
-                listCitas.remove(id);
-                return true;
-            }
-        }
-        return flag;
-    }
-
-    @Override
-    public boolean actualizarCita(String idActualizar, Cita citaActualizada) {
-        for (Cita cita : listCitas) {
-            if(cita.getId().equals(idActualizar)){
-                cita.setId(citaActualizada.getId());
-                cita.setFecha(citaActualizada.getFecha());
-                cita.setEstadoCita(citaActualizada.getEstadoCita());
-                cita.setHora(citaActualizada.getHora());
-                cita.setAdministrador(citaActualizada.getAdministrador());
-                cita.setTheHistorialMedico(citaActualizada.getTheHistorialMedico());
-                return true;
-            }
-        }
-        return false;
-    }
-
-    @Override
-    public Cita buscarCita(String id) {
-        for (Cita cita : listCitas) {
-            if (cita.getId().equals(id)) {
-                return cita;
-            }
-        }
-        return null;
-    }
-
-    @Override
-
-    public boolean crearMedico(Medico newMedico) {
-        for (Medico medico : listMedicos) {
-            if(verificarMedico(newMedico.getId())){
-                listMedicos.add(medico);
-                return true;
-            }
-        }
-        return false;
-    }
-
-    public boolean verificarMedico(String idVerificar) {
-        for (Medico medico : listMedicos) {
-            if(medico.getId().equals(idVerificar)){
-                return  false;
-            }
-        }
-        return true;
-    }
-
-    @Override
-    public boolean eliminarMedico(String idEliminar) {
-        for (Medico medico : listMedicos) {
-            if(medico.getId().equals(idEliminar)){
-                listMedicos.remove(medico);
-                return true;
-            }
-        }
-        return false;
-    }
-    @Override
-    public boolean modificarMedico(String idMedico, Medico medicoModificado) {
-        for (Medico medico : listMedicos) {
-            if(medico.getId().equals(idMedico)){
-                medico.setNombre(medicoModificado.getNombre());
-                medico.setId(medicoModificado.getId());
-                medico.setEmail(medicoModificado.getEmail());
-                medico.setTelefono(medicoModificado.getTelefono());
-                medico.setEspecialidad(medicoModificado.getEspecialidad());
-                medico.setAdministrador(medicoModificado.getAdministrador());
-                return true;
-            }
-        }
-        return false;
-    }
-
-    @Override
-
-    public  boolean crearPaciente (Paciente newpaciente){
-        for (Paciente paciente : listPacientes) {
-            if(verificarPaciente(newpaciente.getId())){
-                listPacientes.add(paciente);
-                return true;
-            }
-        }
-        return false;
-    }
-
-    public boolean verificarPaciente(String idPaciente){
-        for (Paciente paciente : listPacientes) {
-            if(paciente.getId().equals(idPaciente)){
-                return false;
-            }
-        }
-        return true;
-    }
-
-
-    @Override
-    public boolean modificarPaciente(String idPaciente,Paciente pacienteModificado){
-        boolean flag = false;
-
-        for(Paciente paciente: listPacientes) {
-            if(paciente.getId().equals(idPaciente)){
-                paciente.setNombre(pacienteModificado.getNombre());
-                paciente.setTelefono(pacienteModificado.getTelefono());
-                paciente.setEmail(pacienteModificado.getEmail());
-                flag = true;
-                break;
-            }
-        }
-        return flag;
-    }
-    @Override
-    public boolean eliminarPaciente(String idPacienteEliminar) {
-        boolean flag = false;
-        for(Paciente paciente : listPacientes) {
-            if(paciente.getId().equals(idPacienteEliminar)){
-                listPacientes.remove(idPacienteEliminar);
-                return true;
-            }
-        }
-        return flag;
-    }
 
 }

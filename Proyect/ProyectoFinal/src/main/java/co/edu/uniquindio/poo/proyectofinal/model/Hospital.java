@@ -198,7 +198,7 @@ public class Hospital implements ICrudCita, IAdministrable {
         boolean flag = false;
         for(Paciente paciente : listPacientes) {
             if(paciente.getId().equals(idPacienteEliminar)){
-                listPacientes.remove(idPacienteEliminar);
+                listPacientes.remove(paciente);
                 return true;
             }
         }
@@ -253,7 +253,7 @@ public class Hospital implements ICrudCita, IAdministrable {
         boolean flag = false;
         for(Administrador administrador : listAdministradores) {
             if(administrador.getId().equals(idAdministradorEliminar)){
-                listAdministradores.remove(idAdministradorEliminar);
+                listAdministradores.remove(administrador);
                 return true;
             }
         }
@@ -306,7 +306,7 @@ public class Hospital implements ICrudCita, IAdministrable {
         boolean flag = false;
         for(Sala sala : listSalas) {
             if(sala.getNumero().equals(numero)){
-                listSalas.remove(numero);
+                listSalas.remove(sala);
                 return true;
             }
         }
