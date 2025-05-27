@@ -6,7 +6,7 @@ public class Medico extends Persona{
 
     private EspecialidadMedico especialidad;
     private DisponibilidadMedico disponiblidadMedico;
-    private LinkedList<Paciente> listPacientes;
+    private LinkedList<Paciente> listPacientes = new LinkedList<>();
     public Administrador administrador;
     private Horario horario;
 
@@ -14,8 +14,8 @@ public class Medico extends Persona{
         super(nombre, id, telefono, email);
         this.especialidad = especialidad;
         this.disponiblidadMedico = disponiblidadMedico;
-        LinkedList<Paciente> listPacientes = new LinkedList<>();
     }
+
 
 
     public Medico(EspecialidadMedico especialidad, String nombre, String id, String telefono, String email,DisponibilidadMedico disponiblidadMedico, Horario horario) {
@@ -25,6 +25,9 @@ public class Medico extends Persona{
         this.horario = horario;
     }
 
+    public Medico(String nombre, String id, String telefono, String email, DisponiblidadMedico disponiblidadMedico, EspecialidadMedico especialidadMedico) {
+        super(nombre, id, telefono, email);
+    }
 
 
     public EspecialidadMedico getEspecialidad() {
@@ -91,4 +94,6 @@ public class Medico extends Persona{
     public void setHorario(Horario horario) {
         this.horario = horario;
     }
+
+
 }

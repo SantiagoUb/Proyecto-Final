@@ -57,6 +57,10 @@ public class DashBoadPacienteVIewController {
 
     @FXML
     void clickGuardar(ActionEvent event) {
+        paciente.setNombre(txtNombreUsuario.getText());
+        paciente.setTelefono(txtTelefono.getText());
+        paciente.setEmail(txtEmail.getText());
+        paciente.setId(txtId.getText());
 
     }
 
