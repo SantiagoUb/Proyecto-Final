@@ -1,5 +1,6 @@
 package co.edu.uniquindio.poo.proyectofinal.viewController;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import co.edu.uniquindio.poo.proyectofinal.controller.AdministradorController;
@@ -8,9 +9,12 @@ import co.edu.uniquindio.poo.proyectofinal.model.Administrador;
 import co.edu.uniquindio.poo.proyectofinal.model.Hospital;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
+import javafx.stage.Stage;
 
 public class DashBoadAdministradorViewController {
 
@@ -19,6 +23,9 @@ public class DashBoadAdministradorViewController {
 
     @FXML
     private URL location;
+
+    @FXML
+    private Button Button_CerrarSesion;
 
     @FXML
     private Button Button_Cita;
@@ -52,6 +59,21 @@ public class DashBoadAdministradorViewController {
 
     @FXML
     private Label Text_BienvenidoAdministrador;
+
+    @FXML
+    void onClick_CerrarSecion(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/co/edu/uniquindio/poo/proyectofinal/hello-view.fxml"));
+        Scene scene = new Scene(loader.load(),1000,600);
+        Stage stage = new Stage();
+        LogginViewController logginViewController = loader.getController();
+        logginViewController.setHospital(hospital);
+        logginViewController.inicializar();
+        Stage stageCerrar = (Stage) Button_CerrarSesion.getScene().getWindow();
+        stageCerrar.close();
+        stage.setScene(scene);
+        stage.show();
+
+    }
 
     @FXML
     void onClick_Cita(ActionEvent event) {
@@ -120,6 +142,7 @@ public class DashBoadAdministradorViewController {
 
     @FXML
     void initialize() {
+        assert Button_CerrarSesion != null : "fx:id=\"Button_CerrarSesion\" was not injected: check your FXML file 'dashboardAdministrador.fxml'.";
         assert Button_Cita != null : "fx:id=\"Button_Cita\" was not injected: check your FXML file 'dashboardAdministrador.fxml'.";
         assert Button_CrearMedico != null : "fx:id=\"Button_CrearMedico\" was not injected: check your FXML file 'dashboardAdministrador.fxml'.";
         assert Button_CrearPaciente != null : "fx:id=\"Button_CrearPaciente\" was not injected: check your FXML file 'dashboardAdministrador.fxml'.";

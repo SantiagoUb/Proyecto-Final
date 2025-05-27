@@ -11,6 +11,11 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
+
+import java.io.IOException;
 
 
 public class DashBoadMedicoViewController {
@@ -21,6 +26,9 @@ public class DashBoadMedicoViewController {
 
         @FXML
         private URL location;
+
+        @FXML
+        private Button Button_CerrarSesion;
 
         @FXML
         private Button Button_CrearHistorial;
@@ -88,6 +96,21 @@ public class DashBoadMedicoViewController {
 
         }
 
+       @FXML
+          void onClick_CerrarSecion(ActionEvent event) throws IOException {
+           FXMLLoader loader = new FXMLLoader(getClass().getResource("/co/edu/uniquindio/poo/proyectofinal/hello-view.fxml"));
+           Scene scene = new Scene(loader.load(),1000,600);
+           Stage stage = new Stage();
+           LogginViewController logginViewController = loader.getController();
+           logginViewController.setHospital(hospital);
+           logginViewController.inicializar();
+           Stage stageCerrar = (Stage) Button_CerrarSesion.getScene().getWindow();
+           stageCerrar.close();
+           stage.setScene(scene);
+           stage.show();
+       }
+
+
     public void inicializarDashBoadMedico(Hospital hospital, Medico medico) {
         this.hospital = hospital;
         this.medico = medico;
@@ -100,6 +123,7 @@ public class DashBoadMedicoViewController {
 
     @FXML
         void initialize() {
+            assert Button_CerrarSesion != null : "fx:id=\"Button_CerrarSesion\" was not injected: check your FXML file 'dashboardMedico.fxml'.";
             assert Button_CrearHistorial != null : "fx:id=\"Button_CrearHistorial\" was not injected: check your FXML file 'dashboardMedico.fxml'.";
             assert Button_HorariosConsulta != null : "fx:id=\"Button_HorariosConsulta\" was not injected: check your FXML file 'dashboardMedico.fxml'.";
             assert Button_Notificacion != null : "fx:id=\"Button_Notificacion\" was not injected: check your FXML file 'dashboardMedico.fxml'.";

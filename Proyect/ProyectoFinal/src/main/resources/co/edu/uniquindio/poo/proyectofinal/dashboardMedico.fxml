@@ -24,6 +24,7 @@
                   <Button fx:id="Button_CrearHistorial" layoutX="42.0" layoutY="125.0" mnemonicParsing="false" onAction="#onClick_CrearHistorial" prefHeight="25.0" prefWidth="118.0" text="Crear Historial" />
                   <Button fx:id="Button_HorariosConsulta" layoutX="41.0" layoutY="188.0" mnemonicParsing="false" onAction="#onClick_HorariosConsulta" prefHeight="25.0" prefWidth="118.0" text="Horarios Consulta" />
                   <Button fx:id="Button_Notificacion" layoutX="41.0" layoutY="241.0" mnemonicParsing="false" onAction="#onClick_Notificacion" prefHeight="25.0" prefWidth="118.0" text="Notificacion" />
+                  <Button fx:id="Button_CerrarSesion" layoutX="56.0" layoutY="327.0" mnemonicParsing="false" onAction="#onClick_CerrarSecion" text="Cerrar Sesión" />
                </children>
             </Pane>
             <Pane prefHeight="200.0" prefWidth="200.0">

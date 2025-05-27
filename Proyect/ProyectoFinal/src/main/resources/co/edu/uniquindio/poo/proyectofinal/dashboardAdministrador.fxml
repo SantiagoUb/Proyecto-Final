@@ -25,6 +25,7 @@
                   <Button fx:id="Button_Monitoreo" layoutX="51.0" layoutY="188.0" mnemonicParsing="false" onAction="#onClick_Monitoreo" prefHeight="25.0" prefWidth="98.0" text="Monitoreo" />
                   <Button fx:id="Button_CrearMedico" layoutX="51.0" layoutY="241.0" mnemonicParsing="false" onAction="#onClick_CrearMedico" prefHeight="25.0" prefWidth="98.0" text="Crear Medico" />
                   <Button fx:id="Button_CrearPaciente" layoutX="51.0" layoutY="298.0" mnemonicParsing="false" onAction="#onClick_CrearPaciente" prefHeight="25.0" prefWidth="98.0" text="Crear Paciente" />
+                  <Button fx:id="Button_CerrarSesion" layoutX="57.0" layoutY="349.0" mnemonicParsing="false" onAction="#onClick_CerrarSecion" text="Cerrar Sesión" />
                </children>
             </Pane>
             <Pane prefHeight="200.0" prefWidth="200.0">

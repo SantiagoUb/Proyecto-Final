@@ -111,4 +111,13 @@ public class LogginViewController{
 
     }
 
+    @FXML
+    void initialize() {
+        assert btIngresar != null : "fx:id=\"btIngresar\" was not injected: check your FXML file 'hello-view.fxml'.";
+        assert btRegistrar != null : "fx:id=\"btRegistrar\" was not injected: check your FXML file 'hello-view.fxml'.";
+        assert txtContra != null : "fx:id=\"txtContra\" was not injected: check your FXML file 'hello-view.fxml'.";
+        assert txtUsuario != null : "fx:id=\"txtUsuario\" was not injected: check your FXML file 'hello-view.fxml'.";
+
+    }
+
 }
