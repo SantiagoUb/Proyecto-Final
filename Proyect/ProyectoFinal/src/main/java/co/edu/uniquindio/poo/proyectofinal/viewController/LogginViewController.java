@@ -1,5 +1,6 @@
 package co.edu.uniquindio.poo.proyectofinal.viewController;
 
+import co.edu.uniquindio.poo.proyectofinal.controller.AdministradorController;
 import co.edu.uniquindio.poo.proyectofinal.controller.PacienteController;
 import co.edu.uniquindio.poo.proyectofinal.model.*;
 import javafx.event.ActionEvent;
@@ -19,7 +20,7 @@ import java.util.ResourceBundle;
 public class LogginViewController{
 
     Hospital hospital;
-
+    AdministradorController administradorController;
     PacienteController pacienteController;
 
     @FXML
@@ -70,8 +71,17 @@ public class LogginViewController{
     public void abrirDashBoardMedico(){
 
     }
-
-    public void abrirDashBoardAdminstrador(){
+//        Scene scene = new Scene(loader.load(),1000,600);
+    public void abrirDashBoardAdminstrador() throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/co/edu/uniquindio/poo/proyectofinal/dashboardAdministrador.fxml"));
+        Scene scene = new Scene(loader.load(),1000,600);
+        Stage stage = new Stage();
+        DashBoadAdministradorViewController dashBoadAdministradorViewController = loader.getController();
+        dashBoadAdministradorViewController.inicializarDashBoadAdministrador(hospital,administrador);
+        stage.setScene(scene);
+        Stage stageCerrar = (Stage) btIngresar.getScene().getWindow();
+        stageCerrar.close();
+        stage.show();
 
     }
 
@@ -90,6 +100,7 @@ public class LogginViewController{
 
     public void inicializar(){
         this.pacienteController = new PacienteController(this.hospital);
+        this.administradorController = new AdministradorController(this.hospital);
 
     }
 

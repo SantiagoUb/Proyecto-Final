@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #99D9EA;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.poo.proyectofinal.viewController.DashBoadAdministradorViewController">
+   <children>
+      <Label fx:id="Text_BienvenidoAdministrador" layoutX="7.0" layoutY="14.0" prefHeight="25.0" prefWidth="209.0" text="Bienvenido Administrador" textFill="#2b2828">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Label>
+      <HBox prefHeight="400.0" prefWidth="200.0">
+         <children>
+            <Pane prefHeight="400.0" prefWidth="408.0">
+               <children>
+                  <Button fx:id="Button_Cita" layoutX="51.0" layoutY="73.0" mnemonicParsing="false" onAction="#onClick_Cita" prefHeight="25.0" prefWidth="98.0" text="Cita" />
+                  <Button fx:id="Button_Notificacion" layoutX="51.0" layoutY="125.0" mnemonicParsing="false" onAction="#onClick_Notificacion" prefHeight="25.0" prefWidth="98.0" text="Notificacion" />
+                  <Button fx:id="Button_Monitoreo" layoutX="51.0" layoutY="188.0" mnemonicParsing="false" onAction="#onClick_Monitoreo" prefHeight="25.0" prefWidth="98.0" text="Monitoreo" />
+                  <Button fx:id="Button_CrearMedico" layoutX="51.0" layoutY="241.0" mnemonicParsing="false" onAction="#onClick_CrearMedico" prefHeight="25.0" prefWidth="98.0" text="Crear Medico" />
+                  <Button fx:id="Button_CrearPaciente" layoutX="51.0" layoutY="298.0" mnemonicParsing="false" onAction="#onClick_CrearPaciente" prefHeight="25.0" prefWidth="98.0" text="Crear Paciente" />
+               </children>
+            </Pane>
+            <Pane prefHeight="200.0" prefWidth="200.0">
+               <children>
+                  <Pane fx:id="Pane_Cita" prefHeight="400.0" prefWidth="402.0" visible="false" />
+                  <Pane fx:id="Pane_Notificacion" prefHeight="400.0" prefWidth="402.0" visible="false" />
+                  <Pane fx:id="Pane_CrearMedico" prefHeight="400.0" prefWidth="402.0" visible="false">
+                     <children>
+                        <TextField layoutX="115.0" layoutY="68.0" />
+                        <TextField layoutX="115.0" layoutY="131.0" />
+                        <TextField layoutX="115.0" layoutY="200.0" />
+                        <TextField layoutX="115.0" layoutY="261.0" />
+                        <ComboBox layoutX="114.0" layoutY="328.0" prefWidth="150.0" promptText="Especialidad" />
+                        <Text layoutX="114.0" layoutY="52.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ingrese el nombre" />
+                        <Text layoutX="114.0" layoutY="115.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ingrese la cedula" />
+                        <Text layoutX="114.0" layoutY="182.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ingrese el telefono" />
+                        <Text layoutX="114.0" layoutY="247.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ingrese el email" />
+                     </children>
+                  </Pane>
+                  <Pane fx:id="Pane_Monitoreo" prefHeight="400.0" prefWidth="402.0" visible="false" />
+                  <Pane fx:id="Pane_CrearPaciente" layoutX="10.0" layoutY="10.0" prefHeight="400.0" prefWidth="402.0" visible="false">
+                     <children>
+                        <TextField layoutX="115.0" layoutY="68.0" />
+                        <TextField layoutX="115.0" layoutY="131.0" />
+                        <TextField layoutX="115.0" layoutY="200.0" />
+                        <TextField layoutX="115.0" layoutY="261.0" />
+                        <Text layoutX="114.0" layoutY="52.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ingrese el nombre" />
+                        <Text layoutX="114.0" layoutY="115.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ingrese la cedula" />
+                        <Text layoutX="114.0" layoutY="182.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ingrese el telefono" />
+                        <Text layoutX="114.0" layoutY="247.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ingrese el email" />
+                     </children>
+                  </Pane>
+               </children>
+            </Pane>
+         </children>
+      </HBox>
+   </children>
+</Pane>
