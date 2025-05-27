@@ -26,9 +26,8 @@ public class Administrador extends Persona implements ICrudCita, IAdministrable{
 
 
     //CRUD Notificacion
-    public boolean crearNotificacion(Notificacion newNotificacion){
+    public void crearNotificacion(Notificacion newNotificacion){
         listNotificaciones.add(newNotificacion);
-        return true;
     }
 
     public boolean eliminarNotificacion(Notificacion notificacionEliminar){
@@ -40,6 +39,7 @@ public class Administrador extends Persona implements ICrudCita, IAdministrable{
     // monitoreo de disponibilidad de medicos y asignacion de pacientes
     public boolean monitoreoYAsignacionMedico(String idMedico, String idPaciente){
 
+        boolean asignar = false;
         Medico medicoAsociado = null;
         Paciente pacienteAsociado = null;
 
@@ -56,9 +56,9 @@ public class Administrador extends Persona implements ICrudCita, IAdministrable{
         if(medicoAsociado != null && pacienteAsociado != null){
             medicoAsociado.getListPacientes().add(pacienteAsociado);
             medicoAsociado.setDisponiblidadMedico(DisponibilidadMedico.NO_DISPONIBLE);
-            return true;
+            asignar = true;
         }
-        return false;
+        return asignar;
 
     }
 

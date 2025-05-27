@@ -12,7 +12,6 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class PacienteTest {
 
-        Hospital hospitalTest;
         Farmacia farmaciaTest;
         Administrador administrador;
         Paciente paciente;

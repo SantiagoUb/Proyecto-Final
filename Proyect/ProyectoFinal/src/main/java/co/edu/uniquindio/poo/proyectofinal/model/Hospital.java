@@ -342,7 +342,7 @@ public class Hospital implements ICrudCita, IAdministrable {
 
         for(Cita cita : listCitas) {
             if(cita.getId().equals(id)){
-                listCitas.remove(id);
+                listCitas.remove(cita);
                 return true;
             }
         }

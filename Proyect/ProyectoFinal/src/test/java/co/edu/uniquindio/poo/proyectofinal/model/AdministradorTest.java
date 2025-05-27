@@ -185,7 +185,7 @@ class AdministradorTest {
     public void monitoreoYAsignacionMedicosTest(){
 
 
-        boolean resultado = administrador.monitoreoYAsignacionMedico("MED001", "P001" );
+        administrador.monitoreoYAsignacionMedico("MED001", "P001" );
         assertTrue(medico1.getListPacientes().contains(paciente1));
 
 
