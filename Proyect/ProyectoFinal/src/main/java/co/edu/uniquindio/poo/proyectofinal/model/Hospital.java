@@ -9,6 +9,7 @@ public class Hospital implements ICrudCita, IAdministrable {
     private LinkedList<Cita> listCitas;
     private LinkedList<HistorialMedico> listHistorialMedicos;
     private LinkedList<Administrador> listAdministradores;
+    private LinkedList<Persona> listPersona;
     private String nombre;
     private Farmacia farmacia;
 
@@ -21,6 +22,7 @@ public class Hospital implements ICrudCita, IAdministrable {
         this.listCitas = new LinkedList<>();
         this.listHistorialMedicos = new LinkedList<>();
         this.listAdministradores = new LinkedList<>();
+        this.listPersona = new LinkedList<>();
 
     }
 
@@ -445,5 +447,13 @@ public class Hospital implements ICrudCita, IAdministrable {
 
     public void setFarmacia(Farmacia farmacia) {
         this.farmacia = farmacia;
+    }
+
+    public LinkedList<Persona> getListPersona() {
+        return listPersona;
+    }
+
+    public void setListPersona(LinkedList<Persona> listPersona) {
+        this.listPersona = listPersona;
     }
 }

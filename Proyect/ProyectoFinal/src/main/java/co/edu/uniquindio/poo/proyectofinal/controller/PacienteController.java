@@ -2,6 +2,7 @@ package co.edu.uniquindio.poo.proyectofinal.controller;
 
 import co.edu.uniquindio.poo.proyectofinal.model.Hospital;
 import co.edu.uniquindio.poo.proyectofinal.model.Paciente;
+import co.edu.uniquindio.poo.proyectofinal.model.Persona;
 
 public class PacienteController {
 
@@ -15,8 +16,8 @@ public class PacienteController {
         this.hospital = hospital;
     }
 
-    public Paciente buscarPaciente(String nombre, String id) {
-        for(Paciente newPaciente: hospital.getListPacientes()){
+    public Persona buscarPaciente(String nombre, String id) {
+        for(Persona newPaciente: hospital.getListPersona()){
             if(newPaciente.getNombre().equals(nombre) && newPaciente.getId().equals(id)){
                 return newPaciente;
             }

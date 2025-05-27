@@ -38,7 +38,7 @@ public class App extends Application {
         historialMedico.setPaciente(paciente);
         paciente.setTheHistorialMedico(historialMedico);
         Cita cita = new Cita("01", LocalDate.now(), LocalTime.now(),historialMedico,EstadoCita.CONFIRMADO);
-        Administrador administrador = new Administrador("Tomas","10718302", "3214684", "oscart.aristizabalv@loquesea",farmacia);
+        Administrador administrador = new Administrador("Tomas","122", "3214684", "oscart.aristizabalv@loquesea",farmacia);
         farmacia.setAdministrador(administrador);
         paciente.setAdministrador(administrador);
         medico.setAdministrador(administrador);
@@ -51,6 +51,9 @@ public class App extends Application {
         hospital.getListMedicos().add(medico);
         hospital.getListHistorialMedicos().add(historialMedico);
         hospital.getListPacientes().add(paciente);
+        hospital.getListPersona().add(paciente);
+        hospital.getListPersona().add(medico);
+        hospital.getListPersona().add(administrador);
 
         return hospital;
     }

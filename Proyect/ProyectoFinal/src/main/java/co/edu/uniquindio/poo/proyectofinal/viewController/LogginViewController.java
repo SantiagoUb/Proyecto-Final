@@ -34,19 +34,23 @@ public class LogginViewController{
     @FXML
     private TextField txtUsuario;
     Paciente paciente;
+    Administrador administrador;
+    Medico medico;
 
     @FXML
     void clickIngrear(ActionEvent event) throws IOException {
         if (!txtUsuario.getText().isEmpty() && !txtContra.getText().isEmpty()) {
             Persona pacienteEncontrado = pacienteController.buscarPaciente(txtUsuario.getText(), txtContra.getText());
-            paciente = (Paciente) pacienteEncontrado;
 
            if (pacienteEncontrado != null) {
                if (pacienteEncontrado instanceof Paciente) {
+                   this.paciente = (Paciente) pacienteEncontrado;
                    abrirDashboardPaciente();
                }else if(pacienteEncontrado instanceof Medico) {
+                   this.medico = (Medico) pacienteEncontrado;
                    abrirDashBoardMedico();
                }else if (pacienteEncontrado instanceof Administrador) {
+                   this.administrador = (Administrador) pacienteEncontrado;
                    abrirDashBoardAdminstrador();
                }
            }
@@ -71,8 +75,16 @@ public class LogginViewController{
 
     }
 
-    public void abrirDashBoardAdminstrador(){
-
+    public void abrirDashBoardAdminstrador() throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/co/edu/uniquindio/poo/proyectofinal/dashboardAdministrador.fxml"));
+        Scene scene = new Scene(loader.load(),1000,600);
+        Stage stage = new Stage();
+        DashBoadAdministradorViewController dashBoadPacienteVIewController = loader.getController();
+        dashBoadPacienteVIewController.inicializarDashBoadAdministrador(hospital,administrador);
+        stage.setScene(scene);
+        Stage stageCerrar = (Stage) btIngresar.getScene().getWindow();
+        stageCerrar.close();
+        stage.show();
     }
 
     @FXML
