@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<Pane fx:id="Pane_Medico" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #99D9EA;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.poo.proyectofinal.viewController.DashBoadMedicoViewController">
+   <children>
+      <Label fx:id="Text_BienvenidoMedico" layoutX="7.0" layoutY="14.0" prefHeight="25.0" prefWidth="209.0" text="Bienvenido Medico" textFill="#2b2828">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Label>
+      <HBox prefHeight="400.0" prefWidth="200.0">
+         <children>
+            <Pane prefHeight="400.0" prefWidth="408.0">
+               <children>
+                  <Button fx:id="Button_VerHistorialMedico" layoutX="41.0" layoutY="71.0" mnemonicParsing="false" onAction="#onClick_VerHistorialMedico" prefHeight="25.0" prefWidth="125.0" text="Ver Historial Medico" />
+                  <Button fx:id="Button_CrearHistorial" layoutX="42.0" layoutY="125.0" mnemonicParsing="false" onAction="#onClick_CrearHistorial" prefHeight="25.0" prefWidth="118.0" text="Crear Historial" />
+                  <Button fx:id="Button_HorariosConsulta" layoutX="41.0" layoutY="188.0" mnemonicParsing="false" onAction="#onClick_HorariosConsulta" prefHeight="25.0" prefWidth="118.0" text="Horarios Consulta" />
+                  <Button fx:id="Button_Notificacion" layoutX="41.0" layoutY="241.0" mnemonicParsing="false" onAction="#onClick_Notificacion" prefHeight="25.0" prefWidth="118.0" text="Notificacion" />
+               </children>
+            </Pane>
+            <Pane prefHeight="200.0" prefWidth="200.0">
+               <children>
+                  <Pane fx:id="Pane_VerHistorialMedico" prefHeight="400.0" prefWidth="402.0" visible="false" />
+                  <Pane fx:id="Pane_CrearHistorial" prefHeight="400.0" prefWidth="402.0" visible="false" />
+                  <Pane fx:id="Pane_HorariosConsulta" prefHeight="400.0" prefWidth="402.0" visible="false">
+                     <children>
+                        <TextField layoutX="115.0" layoutY="68.0" />
+                        <TextField layoutX="115.0" layoutY="131.0" />
+                        <TextField layoutX="115.0" layoutY="200.0" />
+                        <TextField layoutX="115.0" layoutY="261.0" />
+                        <ComboBox layoutX="114.0" layoutY="328.0" prefWidth="150.0" promptText="Especialidad" />
+                        <Text layoutX="114.0" layoutY="52.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ingrese el nombre" />
+                        <Text layoutX="114.0" layoutY="115.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ingrese la cedula" />
+                        <Text layoutX="114.0" layoutY="182.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ingrese el telefono" />
+                        <Text layoutX="114.0" layoutY="247.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ingrese el email" />
+                     </children>
+                  </Pane>
+                  <Pane fx:id="Pane_Notificacion" prefHeight="400.0" prefWidth="402.0" visible="false" />
+               </children>
+            </Pane>
+         </children>
+      </HBox>
+   </children>
+</Pane>

@@ -31,7 +31,7 @@ public class App extends Application {
     public Hospital inicializarDatosQuemados(){
 
         Hospital hospital = new Hospital("Hospital UQ");
-        Medico medico = new Medico("Jhanca", "1383315", "32168498", "juasn@jusam", DisponiblidadMedico.DISPONIBLE,EspecialidadMedico.GENERAL);
+        Medico medico = new Medico("Jhanca", "133", "32168498", "juasn@jusam", DisponiblidadMedico.DISPONIBLE,EspecialidadMedico.GENERAL);
         Farmacia farmacia = new Farmacia("Farmacia UQ", "Cra 19 y ya ");
         Paciente paciente = new Paciente("Oscar","123","613153","jausna@loque");
         HistorialMedico historialMedico = new HistorialMedico("12256", "ninguna");
